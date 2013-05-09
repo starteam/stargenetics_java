@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<project name="StarGenetics" default="build" basedir=".">
+	<taskdef name="apt" classname="org.apache.tools.ant.taskdefs.Apt" />
+	<taskdef name="jreleaseinfo" classname="ch.oscg.jreleaseinfo.anttask.JReleaseInfoAntTask" classpath="../CommonLibrariesBin/ant-tasks/jreleaseinfo-1.2.0.jar"/>
+
+	<property name="src" value="${basedir}/src" />
+	<property name="isrc" value="${basedir}/isrc" />
+	<property name="build" value="${basedir}/build" />
+
+	<property name="preprocess.dir" value="${basedir}/generated_src" />
+<!--
+	<property name="src.tests" value="${basedir}/tests" />
+	<property name="preprocess.dir.tests" value="${basedir}/generated_tests" />
+-->
+	<path id="apt.classpath">
+		<pathelement path="${basedir}/bin" />
+		<pathelement path="../star_signalsystem_java/bin" />
+		<pathelement path="../Plugin-Commons/bin" />
+		<pathelement path="lib/miglayout15-swing.jar" />
+		<pathelement path="lib/poi-3.2-FINAL-20081019.jar" />
+		<pathelement path="lib/json.jar" />		
+		<pathelement path="lib/jetty-all-7.2.2.v20101205.jar" />		
+		<pathelement path="lib/servlet-api-2.5.jar" />		
+	</path>
+
+	<target name="build" depends="postclean">
+	</target>
+	
+	<target name="update_samples">
+		<echo>Downloading samples</echo>		
+		<exec executable="/usr/local/bin/wget" dir="${basedir}/src/resources">
+			<arg value="-r"/>
+			<arg value="--level=1"/>
+			<arg value="http://web.mit.edu/star/genetics/problemsets/samples_body.html"/>
+		</exec>
+	</target>
+
+	<target name="publish" depends="build">
+		<echo>Publishing and signing</echo>
+		<exec executable="scp">
+			<arg value="StarGenetics.jar" />
+			<arg value="ceraj@starapp.mit.edu:/home/star/star/media/uploads/star/jar/genetics3/StarGenetics3.jar" />
+		</exec>
+		
+		<exec executable="ssh">
+<!--			<arg value="-ssh" />
+			<arg value="starapp.mit.edu" />
+			<arg value="-l" />
+			<arg value="ceraj" />
+-->
+			<arg value="root@starapp.mit.edu"/>
+			<arg value="/home/star/build/sign_genetics3.sh" />
+		</exec>
+		
+	</target>
+
+	<target name="clean" depends="">
+		<echo>Deleting</echo>
+		<mkdir dir="${build}"/>
+		<delete>
+			<fileset dir="${src}">
+				<include name="**/*.class" />
+			</fileset>			
+			<fileset dir="${isrc}">
+				<include name="**/*.class" />
+			</fileset>
+			<fileset dir="${build}">
+				<include name="**/*.class" />
+			</fileset>						
+			<fileset dir="${preprocess.dir}">
+				<include name="**/*.class" />
+			</fileset>
+			<filename name="StarGenetics.jar"/>			
+		</delete>
+	</target>
+
+	<target name="postclean" depends="apt,compile,jar">
+		<echo>Post build delete</echo>
+		<delete>
+			<fileset dir="${src}">
+				<include name="**/*.class" />
+			</fileset>			
+			<fileset dir="${isrc}">
+				<include name="**/*.class" />
+			</fileset>
+			<fileset dir="${build}">
+				<include name="**/*.class" />
+			</fileset>						
+			<fileset dir="${preprocess.dir}">
+				<include name="**/*.class" />
+			</fileset>						
+		</delete>
+	</target>
+
+	
+	<target name="events_apt" depends="clean">
+		<echo>Precompiling</echo>
+		<apt srcdir="${isrc}" classpathref="apt.classpath" debug="on" includes="**/*.java" factory="star.annotations.ProcessorFactory" preprocessdir="${preprocess.dir}" fork="on" target="1.5" />
+	</target>
+
+	<target name="events_compile" depends="events_apt">
+		<echo>Compiling</echo>
+		<!--<javac srcdir="${isrc};${preprocess.dir}" classpathref="apt.classpath" destdir="${build}" debug="on" includes="**/*.java" optimize="on" target="1.5" />-->
+	</target>
+
+	<target name="compile" depends="apt">
+		<echo>Updating build date</echo>
+
+		<jreleaseinfo targetDir="src" packagename="star.genetics" classname="Version" project="StarGenetics">
+		</jreleaseinfo>
+
+		<echo>Compiling</echo>
+		<mkdir dir="${build}"/>
+		<javac srcdir="${src};${isrc};${preprocess.dir}" classpathref="apt.classpath" destdir="${build}" debug="on" includes="**/*.java" optimize="on" target="1.5" />
+	</target>
+
+	<target name="apt"> <!-- depends="events_compile">
+		<echo>Precompiling</echo>
+		<apt srcdir="${src};${isrc};${preprocess.dir}" classpathref="apt.classpath" debug="on" includes="**/*.java" factory="star.annotations.ProcessorFactory" preprocessdir="${preprocess.dir}" fork="on" target="1.5" />
+		-->
+	</target>
+
+	<target name="jar" depends="update_samples">
+		<echo>Creating JAR</echo>
+		<jar destfile="StarGenetics.jar">
+			<fileset dir="build" id="build">
+				<include name="**" />
+				<exclude name=".classpath" />
+				<exclude name=".project" />
+				<exclude name=".settings" />
+				<exclude name=".settings/**" />
+			</fileset>
+			<fileset dir="src" id="pref">
+				<include name="preferences/**" />
+				<include name="resources/**" />
+				<include name="star/genetics/*.properties"/>
+				<exclude name=".settings/**" />
+			</fileset>
+			<fileset dir="../star_signalsystem_java/bin" id="SignalSystem">
+				<include name="**" />
+				<exclude name="**/*.jar*" />
+				<exclude name=".classpath" />
+				<exclude name=".project" />
+				<exclude name=".settings" />
+				<exclude name="**/*.java" />
+				<exclude name="star/junit/**" />
+				<exclude name=".settings/**" />
+			</fileset>
+				<fileset dir="../stargenetics_private_java/bin" id="SignalSystem">
+					<include name="**" />
+					<exclude name="**/*.jar*" />
+					<exclude name=".classpath" />
+					<exclude name=".project" />
+					<exclude name=".settings" />
+					<exclude name="**/*.java" />
+					<exclude name="star/junit/**" />
+					<exclude name=".settings/**" />
+				</fileset>
+
+		</jar>
+	</target>
+
+</project>
