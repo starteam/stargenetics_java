@@ -569,7 +569,10 @@ public class Load extends Load_generated implements OpenModel
 				raise_ErrorDialogEvent();
 			}
 		}
-		priv.openModel(r, this);
+		else if (priv != null)
+		{
+			priv.openModel(r, this);
+		}
 		// needs to load PrivateIO
 	}
 
