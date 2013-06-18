@@ -22,6 +22,7 @@
 		<pathelement path="lib/json.jar" />		
 		<pathelement path="lib/jetty-all-7.2.2.v20101205.jar" />		
 		<pathelement path="lib/servlet-api-2.5.jar" />		
+		<pathelement path="../stargenetics_private_java/bin" />		
 	</path>
 
 	<target name="build" depends="postclean">
