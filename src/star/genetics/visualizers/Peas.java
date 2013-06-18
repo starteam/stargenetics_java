@@ -82,6 +82,11 @@ public class Peas extends JComponent implements Visualizer
 		{
 			return "white"; //$NON-NLS-1$
 		}
+		if (c.equalsIgnoreCase("red1")) //$NON-NLS-1$
+		{
+			return "red"; //$NON-NLS-1$
+		}
+
 		return c;
 	}
 
@@ -159,7 +164,7 @@ public class Peas extends JComponent implements Visualizer
 
 	Image getFlowerImage()
 	{
-		String path = MessageFormat.format("{0} plant {1} {2} flowers-03.png", stems.toString(), flowers.toString(), getColor(petalsColor)); //$NON-NLS-1$
+		String path = MessageFormat.format("{0} plant {1} {2} flowers-03.png", stems.toString().toLowerCase(), flowers.toString().toLowerCase(), getColor(petalsColor).toLowerCase()); //$NON-NLS-1$
 		java.net.URL url = this.getClass().getResource("/resources/peas/" + path.toLowerCase()); //$NON-NLS-1$
 		if (url == null)
 		{
