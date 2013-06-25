@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <project name="StarGenetics" default="build" basedir=".">
-	<taskdef name="apt" classname="org.apache.tools.ant.taskdefs.Apt" />
-	<taskdef name="jreleaseinfo" classname="ch.oscg.jreleaseinfo.anttask.JReleaseInfoAntTask" classpath="../CommonLibrariesBin/ant-tasks/jreleaseinfo-1.2.0.jar"/>
+	<taskdef name="jreleaseinfo" classname="ch.oscg.jreleaseinfo.anttask.JReleaseInfoAntTask" classpath="../star_signalsystem_java/lib/jreleaseinfo-1.2.0.jar"/>
 
 	<property name="src" value="${basedir}/src" />
 	<property name="isrc" value="${basedir}/isrc" />
@@ -16,7 +15,6 @@
 	<path id="apt.classpath">
 		<pathelement path="${basedir}/bin" />
 		<pathelement path="../star_signalsystem_java/bin" />
-		<pathelement path="../Plugin-Commons/bin" />
 		<pathelement path="lib/miglayout15-swing.jar" />
 		<pathelement path="lib/poi-3.2-FINAL-20081019.jar" />
 		<pathelement path="lib/json.jar" />		
