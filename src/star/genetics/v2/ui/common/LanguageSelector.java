@@ -32,7 +32,7 @@ public class LanguageSelector extends LanguageSelector_generated
 	public LanguageSelector()
 	{
 		super();
-		map.put("ht", "Kreyòl"); //$NON-NLS-1$ //$NON-NLS-2$
+		map.put("ht", "Kreyól"); //$NON-NLS-1$ //$NON-NLS-2$
 		map.put("en", new Locale("en").getDisplayLanguage(new Locale("en"))); //$NON-NLS-1$ //$NON-NLS-2$
 		setIcon(getIcon(Locale.getDefault()));
 		if (map.containsKey(Locale.getDefault().getLanguage()))

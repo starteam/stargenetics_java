@@ -103,7 +103,7 @@
 		<!--<javac srcdir="${isrc};${preprocess.dir}" classpathref="apt.classpath" destdir="${build}" debug="on" includes="**/*.java" optimize="on" target="1.5" />-->
 	</target>
 
-	<target name="compile" depends="apt">
+	<target name="compile" depends="apt, messagesbuilder">
 		<echo>Updating build date</echo>
 
 		<jreleaseinfo targetDir="src" packagename="star.genetics" classname="Version" project="StarGenetics">
@@ -112,6 +112,20 @@
 		<echo>Compiling</echo>
 		<mkdir dir="${build}"/>
 		<javac srcdir="${src};${isrc};${preprocess.dir}" classpathref="apt.classpath" destdir="${build}" debug="on" includes="**/*.java" optimize="on" target="1.5" />
+	</target>
+	
+	<target name="messagesbuilder">
+		<java jar="./xls2i18.jar" fork="true" failonerror="true">
+			<arg value = "src/StarGenetics_Properties_ht.xls"/>
+			<arg value = "src/star/genetics/messages.properties"/>	
+		</java>
+		<echo>Kreyol Properies Built</echo>
+		
+		<java jar="./xls2i18.jar" fork="true" failonerror="true">
+			<arg value = "src/StarGenetics_Properties_en.xls"/>
+			<arg value = "src/star/genetics/messages.properties"/>	
+		</java>
+		<echo>English Properies Built</echo>		
 	</target>
 
 	<target name="apt"> <!-- depends="events_compile">
