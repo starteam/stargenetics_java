@@ -3,6 +3,7 @@ package star.genetics.v2.ui.menu;
 import java.awt.MenuShortcut;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.util.Locale;
 
 import javax.swing.JOptionPane;
 
@@ -19,7 +20,10 @@ public class About extends About_generated implements ActionListener
 	@Override
 	protected String getMenuName()
 	{
+		System.err.println("Locale:  " + Locale.getDefault());
+		System.err.println(Messages.getString("About.0"));
 		return Messages.getString("About.0"); //$NON-NLS-1$
+		
 	}
 
 	@Override

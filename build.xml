@@ -39,7 +39,7 @@
 		<echo>Publishing and signing</echo>
 		<exec executable="scp">
 			<arg value="StarGenetics.jar" />
-			<arg value="ceraj@starapp.mit.edu:/home/star/star/media/uploads/star/jar/genetics3/StarGenetics3.jar" />
+			<arg value="bonners@starapp.mit.edu:/home/star/star/media/uploads/star/jar/genetics3/StarGenetics3.jar" />
 		</exec>
 		
 		<exec executable="ssh">
@@ -120,6 +120,11 @@
 			<arg value = "src/star/genetics/messages.properties"/>	
 		</java>
 		<echo>Kreyol Properies Built</echo>
+		<java jar="./xls2i18.jar" fork="true" failonerror="true">
+					<arg value = "src/StarGenetics_Properties_pt.xls"/>
+					<arg value = "src/star/genetics/messages.properties"/>	
+				</java>
+				<echo>Portuguese Properies Built</echo>
 		
 		<java jar="./xls2i18.jar" fork="true" failonerror="true">
 			<arg value = "src/StarGenetics_Properties_en.xls"/>
