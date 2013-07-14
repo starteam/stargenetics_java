@@ -48,7 +48,7 @@
 			<arg value="-l" />
 			<arg value="ceraj" />
 -->
-			<arg value="root@starapp.mit.edu"/>
+			<arg value="bonners@starapp.mit.edu"/>
 			<arg value="/home/star/build/sign_genetics3.sh" />
 		</exec>
 		

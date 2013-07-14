@@ -1,5 +1,5 @@
 /* Created by JReleaseInfo AntTask from Open Source Competence Group */
-/* Creation date Fri Jul 12 17:57:17 EDT 2013 */
+/* Creation date Sun Jul 14 13:57:24 EDT 2013 */
 package star.genetics;
 
 import java.util.Date;
@@ -12,11 +12,11 @@ import java.util.Date;
 public class Version {
 
 
-   /** buildDate (set during build process to 1373666237642L). */
-   private static Date buildDate = new Date(1373666237642L);
+   /** buildDate (set during build process to 1373824644739L). */
+   private static Date buildDate = new Date(1373824644739L);
 
    /**
-    * Get buildDate (set during build process to Fri Jul 12 17:57:17 EDT 2013).
+    * Get buildDate (set during build process to Sun Jul 14 13:57:24 EDT 2013).
     * @return Date buildDate
     */
    public static final Date getBuildDate() { return buildDate; }
