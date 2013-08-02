@@ -18,7 +18,7 @@
 		<pathelement path="lib/miglayout15-swing.jar" />
 		<pathelement path="lib/poi-3.2-FINAL-20081019.jar" />
 		<pathelement path="lib/json.jar" />		
-		<pathelement path="lib/jetty-all-7.2.2.v20101205.jar" />		
+		<pathelement path="lib/jetty-all-7.6.12.v20130726.jar" />		
 		<pathelement path="lib/servlet-api-2.5.jar" />		
 		<pathelement path="../stargenetics_private_java/bin" />		
 	</path>
@@ -129,6 +129,11 @@
 					<arg value = "src/star/genetics/messages.properties"/>	
 				</java>
 				<echo>Portuguese Properies Built</echo>
+		<java jar="./xls2i18.jar" fork="true" failonerror="true">
+					<arg value = "src/StarGenetics_Properties_uk.xls"/>
+					<arg value = "src/star/genetics/messages.properties"/>	
+				</java>
+				<echo>Translator's Key Properies Built</echo>
 		
 		<java jar="./xls2i18.jar" fork="true" failonerror="true">
 			<arg value = "src/StarGenetics_Properties_en.xls"/>

@@ -39,8 +39,8 @@ public class WebSamples extends WebSamples_generated
 {
 	private static final long serialVersionUID = 1L;
 	private WebSamples self = this;
-	final private String url = "http://web.mit.edu/star/genetics/problemsets/samples_body.html"; //$NON-NLS-1$
-	final private URL alternate_url = this.getClass().getResource("/resources/web.mit.edu/star/genetics/problemsets/samples_body.html"); //$NON-NLS-1$
+	final private String url = Messages.getString("WebSamples.2"); //$NON-NLS-1$
+	final private URL alternate_url = this.getClass().getResource(Messages.getString("WebSamples.4")); //$NON-NLS-1$
 	private URL samplesURL = null;
 	private String openURL = null;
 	private boolean isAlternate = false;
