@@ -50,6 +50,14 @@ public class LanguageSelector extends LanguageSelector_generated
 		{
 			return Icons.FLAG_HT.getIcon(16);
 		}
+		if (locale.getLanguage().equalsIgnoreCase("pt"))
+		{
+			return Icons.FLAG_PT.getIcon(16);
+		}
+		if (locale.getLanguage().equalsIgnoreCase("uk"))
+		{
+			return Icons.FLAG_Trans.getIcon(16);
+		}
 		return Icons.FLAG_DEFAULT.getIcon(16);
 
 	}
