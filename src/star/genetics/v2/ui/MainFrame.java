@@ -28,6 +28,7 @@ import star.genetics.events.LoadModelRaiser;
 import star.genetics.genetic.model.Model;
 import star.genetics.genetic.model.ModelModifiedProvider;
 import star.genetics.v2.ui.common.CommonMenuBar;
+import star.genetics.v3.WebSocketComponent;
 import star.version.VersionCheckerDecoration;
 import utils.UIHelpers;
 
@@ -119,6 +120,7 @@ public class MainFrame extends MainFrame_generated implements VersionCheckerDeco
 		getContentPane().add(mainPanel);
 		setTitle(getPreferences().get("title", "missing preferences")); //$NON-NLS-1$ //$NON-NLS-2$
 		getAdapter().addComponent(new UnhandledExceptionHandlerComponent());
+		getAdapter().addComponent(new WebSocketComponent());
 		pack();
 	}
 

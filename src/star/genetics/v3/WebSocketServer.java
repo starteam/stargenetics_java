@@ -31,7 +31,7 @@ public class WebSocketServer {
 	    server.setHandler(handlers);
 
 	    server.start();
-	    server.join();
+	    //server.join();
 	}
 
 	void close() throws Exception {

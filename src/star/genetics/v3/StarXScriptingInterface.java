@@ -1,5 +1,11 @@
 package star.genetics.v3;
 
-public class StarXScriptingInterface {
+import java.io.ByteArrayOutputStream;
+
+public interface StarXScriptingInterface {
+
+	void open(String url, String title);
+
+	void save(ByteArrayOutputStream bos);
 
 }

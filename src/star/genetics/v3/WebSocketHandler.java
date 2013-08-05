@@ -11,7 +11,11 @@ import org.eclipse.jetty.websocket.WebSocket;
 import org.eclipse.jetty.websocket.WebSocketFactory;
 
 public class WebSocketHandler extends HttpServlet {
+
+	private static final long serialVersionUID = 1L;
 	private WebSocketFactory _wsFactory;
+
+	public static StarXWebSocket messageHandler;
 
 	@Override
 	public void init() throws ServletException {
