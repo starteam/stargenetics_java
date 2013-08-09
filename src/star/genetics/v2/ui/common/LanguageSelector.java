@@ -32,7 +32,9 @@ public class LanguageSelector extends LanguageSelector_generated
 	public LanguageSelector()
 	{
 		super();
-		map.put("ht", "Kreyòl"); //$NON-NLS-1$ //$NON-NLS-2$
+		map.put("ht", "Kreyól"); //$NON-NLS-1$ //$NON-NLS-2$
+		map.put("pt", "Português"); //$NON-NLS-1$ //$NON-NLS-2$
+		map.put("uk", "Translator Keys");
 		map.put("en", new Locale("en").getDisplayLanguage(new Locale("en"))); //$NON-NLS-1$ //$NON-NLS-2$
 		setIcon(getIcon(Locale.getDefault()));
 		if (map.containsKey(Locale.getDefault().getLanguage()))
@@ -48,6 +50,14 @@ public class LanguageSelector extends LanguageSelector_generated
 		{
 			return Icons.FLAG_HT.getIcon(16);
 		}
+		if (locale.getLanguage().equalsIgnoreCase("pt"))
+		{
+			return Icons.FLAG_PT.getIcon(16);
+		}
+		if (locale.getLanguage().equalsIgnoreCase("uk"))
+		{
+			return Icons.FLAG_Trans.getIcon(16);
+		}
 		return Icons.FLAG_DEFAULT.getIcon(16);
 
 	}
@@ -60,7 +70,7 @@ public class LanguageSelector extends LanguageSelector_generated
 		removeAll();
 		try
 		{
-			Set<String> keys = map.keySet();
+			Set<String> keys = map.descendingMap().keySet();
 			Stack<JMenuItem> s = new Stack<JMenuItem>();
 			for (String key : keys)
 			{

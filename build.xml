@@ -18,7 +18,7 @@
 		<pathelement path="lib/miglayout15-swing.jar" />
 		<pathelement path="lib/poi-3.2-FINAL-20081019.jar" />
 		<pathelement path="lib/json.jar" />		
-		<pathelement path="lib/jetty-all-7.2.2.v20101205.jar" />		
+		<pathelement path="lib/jetty-all-7.6.12.v20130726.jar" />		
 		<pathelement path="lib/servlet-api-2.5.jar" />		
 		<pathelement path="../stargenetics_private_java/bin" />		
 	</path>
@@ -31,9 +31,18 @@
 		<exec executable="/usr/local/bin/wget" dir="${basedir}/src/resources">
 			<arg value="-r"/>
 			<arg value="--level=1"/>
-			<arg value="http://web.mit.edu/star/genetics/problemsets/samples_body.html"/>
+			<arg value="http://star.mit.edu/genetics/problemsets/samples_body.html"/>
 		</exec>
 	</target>
+	<target name="update_samples_ht">
+		<echo>Downloading samples</echo>		
+		<exec executable="/usr/local/bin/wget" dir="${basedir}/src/resources">
+			<arg value="-r"/>
+			<arg value="--level=1"/>
+			<arg value="http://star.mit.edu/genetics/problemsets/samples_body_ht.html"/>
+		</exec>
+	</target>
+
 
 	<target name="publish" depends="build">
 		<echo>Publishing and signing</echo>
@@ -48,8 +57,12 @@
 			<arg value="-l" />
 			<arg value="ceraj" />
 -->
-			<arg value="root@starapp.mit.edu"/>
+			
+			<arg value="ceraj@starapp.mit.edu"/>
+			<arg value="sudo"/>
 			<arg value="/home/star/build/sign_genetics3.sh" />
+			
+			
 		</exec>
 		
 	</target>
@@ -103,7 +116,7 @@
 		<!--<javac srcdir="${isrc};${preprocess.dir}" classpathref="apt.classpath" destdir="${build}" debug="on" includes="**/*.java" optimize="on" target="1.5" />-->
 	</target>
 
-	<target name="compile" depends="apt">
+	<target name="compile" depends="apt, messagesbuilder">
 		<echo>Updating build date</echo>
 
 		<jreleaseinfo targetDir="src" packagename="star.genetics" classname="Version" project="StarGenetics">
@@ -113,6 +126,30 @@
 		<mkdir dir="${build}"/>
 		<javac srcdir="${src};${isrc};${preprocess.dir}" classpathref="apt.classpath" destdir="${build}" debug="on" includes="**/*.java" optimize="on" target="1.5" />
 	</target>
+	
+	<target name="messagesbuilder">
+		<java jar="./xls2i18.jar" fork="true" failonerror="true">
+			<arg value = "src/StarGenetics_Properties_ht.xls"/>
+			<arg value = "src/star/genetics/messages.properties"/>	
+		</java>
+		<echo>Kreyol Properies Built</echo>
+		<java jar="./xls2i18.jar" fork="true" failonerror="true">
+					<arg value = "src/StarGenetics_Properties_pt.xls"/>
+					<arg value = "src/star/genetics/messages.properties"/>	
+				</java>
+				<echo>Portuguese Properies Built</echo>
+		<java jar="./xls2i18.jar" fork="true" failonerror="true">
+					<arg value = "src/StarGenetics_Properties_uk.xls"/>
+					<arg value = "src/star/genetics/messages.properties"/>	
+				</java>
+				<echo>Translator's Key Properies Built</echo>
+		
+		<java jar="./xls2i18.jar" fork="true" failonerror="true">
+			<arg value = "src/StarGenetics_Properties_en.xls"/>
+			<arg value = "src/star/genetics/messages.properties"/>	
+		</java>
+		<echo>English Properies Built</echo>		
+	</target>
 
 	<target name="apt"> <!-- depends="events_compile">
 		<echo>Precompiling</echo>
@@ -120,7 +157,7 @@
 		-->
 	</target>
 
-	<target name="jar" depends="update_samples">
+	<target name="jar" depends="update_samples,update_samples_ht">
 		<echo>Creating JAR</echo>
 		<jar destfile="StarGenetics.jar">
 			<fileset dir="build" id="build">
