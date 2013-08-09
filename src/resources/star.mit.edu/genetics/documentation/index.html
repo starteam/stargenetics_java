@@ -1,0 +1,959 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN'
+    'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta content="text/html; charset=utf-8" http-equiv=
+    "content-type" />
+    <title>
+      STAR: Genetics - User Manual
+    </title>
+    <link href="../../media/sphinx/css/neuton_nobile_pygments.css"
+    media="screen" rel="stylesheet" type="text/css" />
+    <link href="../../media/sphinx/css/pylons.css" media="screen"
+    rel="stylesheet" type="text/css" />
+    <link href="../../media/css/projectscroll_and_breadcrumb.css"
+    media="screen" rel="stylesheet" type="text/css" />
+    <script type="text/javascript">
+//<![CDATA[
+                var DOCUMENTATION_OPTIONS = {
+                   URL_ROOT:    '',
+                   VERSION:     '',
+                   COLLAPSE_INDEX: false,
+                   FILE_SUFFIX: '.html',
+                   HAS_SOURCE:  false
+                };
+    //]]>
+    </script>
+    <script type="text/javascript">
+//<![CDATA[
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-1048253-4']);
+
+    _gaq.push(['_setDomainName', '.mit.edu']);
+
+    _gaq.push(['_setAllowLinker', true]);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+    //]]>
+    </script>
+  </head>
+  <body>
+    <div class="header-small">
+      <div class="logo-small">
+        <div class="logo-text">
+          <a href="../index.html">StarGenetics</a>
+        </div>
+        <div class="project_scroll">
+          <a href="../../index.html"><img alt="Star" src=
+          "../../media/uploads/project_logos/home_logo.png" title=
+          "Star" /></a>
+          <p>
+            Home
+          </p>
+        </div>
+        <div class="project_scroll">
+          <a href="../../biochem/index.html"><img alt="Biochem"
+          src="../../media/uploads/project_logos/biochem_new_logo.png"
+          title="Biochem" /></a>
+          <p>
+            Biochem
+          </p>
+        </div>
+        <div class="project_scroll">
+          <a href="../index.html"><img alt="Genetics" src=
+          "../../media/uploads/project_logos/genetics_fly_logo.png"
+          title="Genetics" /></a>
+          <p>
+            Genetics
+          </p>
+        </div>
+        <div class="project_scroll">
+          <a href="../../orf/index.html"><img alt="Orf" src=
+          "../../media/uploads/project_logos/orf.png" title=
+          "Orf" /></a>
+          <p>
+            Orf
+          </p>
+        </div>
+        <div class="project_scroll">
+          <a href="../../biogene/index.html"><img alt="Biogene"
+          src="../../media/uploads/project_logos/biogene_new.png"
+          title="Biogene" /></a>
+          <p>
+            Biogene
+          </p>
+        </div>
+        <div class="project_scroll">
+          <a href="../../hydro/index.html"><img alt="Hydro" src=
+          "../../media/uploads/project_logos/hydro_icon.png" title=
+          "Hydro" /></a>
+          <p>
+            Hydro
+          </p>
+        </div>
+        <div class="project_scroll">
+          <a href="../../molsim/index.html"><img alt="Molsim" src=
+          "../../media/uploads/project_logos/molsim_v2.PNG" title=
+          "Molsim" /></a>
+          <p>
+            Molsim
+          </p>
+        </div>
+        <div class="project_scroll">
+          <a href="../../cluster/index.html"><img alt="Cluster"
+          src="../../media/uploads/project_logos/starcluster_logo.png"
+          title="Cluster" /></a>
+          <p>
+            Cluster
+          </p>
+        </div>
+        <div class="project_scroll">
+          <a href="../../hpc/index.html"><img alt="Hpc" src=
+          "../../media/uploads/project_logos/hpc_new.png" title=
+          "Hpc" /></a>
+          <p>
+            Hpc
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="related">
+      <h3>
+        star Breadcrumb
+      </h3>
+      <ul>
+        <li>
+          <a href="../../index.html">star</a> <span>&gt;</span>
+        </li>
+        <li>
+          <a href="../index.html">genetics</a> <span>&gt;</span>
+          <em>User Manual</em>
+        </li>
+      </ul>
+    </div>
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            <h1>
+              StarGenetics User Manual
+            </h1>
+            <p>
+              Learn how to set up and analyze experiments in
+              StarGenetics.
+            </p>
+            <h1>
+              Contents
+            </h1>
+            <ol>
+              <li>
+                <a href="#Welcome">Welcome to StarGenetics</a>
+              </li>
+              <li>
+                <a href="#Opening%20StarGenetics">Opening
+                StarGenetics</a>
+              </li>
+              <li>
+                <a href=
+                "#StarGenetics%20at%20a%20glance">StarGenetics at a
+                glance</a>
+              </li>
+              <li>
+                <a href="#Fly%20Exercises"><strong>Fly
+                exercises</strong></a>
+                <ul style="margin-bottom: 0;">
+                  <li>
+                    <a href="#Mating%20Organisms">Mating
+                    experiment</a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="#Punnett%20Square%20tool">Punnett Square
+                tool</a>
+              </li>
+              <li>
+                <a href="#Yeast%20Exercises"><strong>Yeast
+                exercises</strong></a>
+                <ul style="margin-bottom: 0;">
+                  <li>
+                    <a href="#Non-tetrad%20experiments">Non-tetrad
+                    experiments</a>
+                  </li>
+                  <li>
+                    <a href="#Tetrad%20experiments">Tetrad
+                    experiments</a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href=
+                "#Renaming%20experiments%20and%20organisms">Renaming
+                experiments &amp; organisms</a>
+              </li>
+              <li>
+                <a href="#Matings%20involving%20progeny">Matings
+                involving progeny</a>
+              </li>
+              <li>
+                <a href=
+                "#Discarding%20experiments%20&amp;%20removing%20organisms">
+                Discarding experiments &amp; removing organisms</a>
+              </li>
+              <li>
+                <a href="#Saving%20experiments">Saving
+                experiments</a>
+              </li>
+              <li>
+                <a href="#Exporting%20data">Exporting data</a>
+              </li>
+              <li>
+                <a href=
+                "#Reporting%20bugs%20or%20asking%20questions">Reporting
+                bugs or asking questions</a>
+              </li>
+            </ol>
+            <h1>
+              <a id="Welcome" name="Welcome"></a>Welcome to
+              StarGenetics
+            </h1>
+            <p>
+              StarGenetics provides a set of tools for analyzing
+              genetic traits. This software simulates mating
+              experiments between organisms that are genetically
+              different across a range of traits and allows
+              students to analyze the nature of the traits in
+              question. StarGenetics runs on standard Linux,
+              Windows and Mac computers.
+            </p>
+            <h1>
+              <a name="Opening StarGenetics"></a>Opening
+              StarGenetics
+            </h1>
+            <p>
+              To get started with StarGenetics:
+            </p>
+            <ol>
+              <li>Navigate to <a href=
+              "http://web.mit.edu/star/genetics" target=
+              "_blank">http://web.mit.edu/star/genetics</a>.
+              </li>
+              <li>Click on the <span style=
+              "color: #ff0000;">Start</span> button to launch the
+              StarGenetics application.
+              </li>
+              <li>Click <span style="color: #ff0000;">Trust</span>
+              when a prompt appears asking if you trust the
+              certificate.
+              </li>
+              <li>Click on <span style="color: #ff0000;">File -&gt;
+              New</span> in the drop-down menu.
+              </li>
+              <li>On the <span style=
+              "color: #ff0000;">Welcome</span> page choose an
+              exercise and click on it. To open an exercise that is
+              not bundled with StarGenetics, click on
+                <span style="color: #ff0000;">File -&gt;
+                Open</span> and then click on the desired file.
+              </li>
+            </ol>
+            <h1>
+              <a name="StarGenetics at a glance"></a>StarGenetics
+              at a glance
+            </h1>
+            <p>
+              This is the view you will see when you open an
+              exercise in StarGenetics.
+            </p>
+            <p>
+              <img alt="screenshot of StarGenetics fly tutorial"
+              src=
+              "../../media/uploads/genetics/images/Screenshot-Star-Genetics-Flies.png"
+              title="screenshot of StarGenetics fly tutorial"
+              width="95%" />
+            </p>
+            <h1>
+              <a name="Fly Exercises"></a>Fly Exercises
+            </h1>
+            <h3>
+              <a name="Mating Organisms"></a>Mating Experiment
+            </h3>
+            <p>
+              To perform a mating between two organisms:
+            </p>
+            <ol>
+              <li>To mate two organisms you can use one of the
+              following 2 methods:<br />
+                <ul>
+                  <li>drag each organism to the <span style=
+                  "color: #ff0000;">Mating site</span> using the
+                  mouse.<br />
+                    <img alt="Mating site" src=
+                    "../../media/uploads/genetics/images/mating_site.png"
+                    title="Mating site" width="21%" />
+                  </li>
+                </ul>
+                <p style="padding-left: 30px;">
+                  -OR-
+                </p>
+                <ul>
+                  <li>click on the organism and then click on the
+                  <span style="color: #ff0000;">Set as a
+                  Parent</span> icon at the bottom of the
+                  <span style=
+                  "color: #ff0000;">Strains</span>box.<br />
+                    <img alt="Set as parent button" height="37"
+                    src="../../media/uploads/genetics/images/set_as_parent_button.png"
+                    title="Set as parent button" width="53" />
+                  </li>
+                </ul>
+              </li>
+              <li>Next, click on the <span style="color: #ff0000;">
+                Mate</span> button.
+              </li>
+              <li>Mating results can be viewed individually under
+              the <span style="color: #ff0000;">Individual</span>
+              tab, in sorted form under the <span style=
+              "color: #ff0000;">Sorted</span> tab, or in summary
+              form under the <span style=
+              "color: #ff0000;">Summary</span> tab.<br />
+                <br />
+                <strong>Individual results:</strong> progeny listed
+                individually<br />
+                <img alt="Idividual mating results" src=
+                "../../media/uploads/genetics/images/Individual-results.png"
+                title="Idividual mating results" width=
+                "70%" /><br />
+                <br />
+                <strong>Sorted results:</strong> progeny sorted by
+                sex and phenotype<br />
+                <img alt="Sorted mating results" src=
+                "../../media/uploads/genetics/images/Sorted-results.png"
+                title="Sorted mating results" width="70%" /><br />
+                <br />
+                <strong>Summary results:</strong> progeny listed by
+                phenotype<br />
+                <img alt="Summary mating results" src=
+                "../../media/uploads/genetics/images/Summary-results.png"
+                title="Summary mating results" width="70%" />
+              </li>
+              <li>To start a new experiment click on the
+              <span style="color: #ff0000;">Save experiment</span>
+              button.<br />
+                <p>
+                  <img alt="Save experiment button" src=
+                  "../../media/uploads/genetics/images/save_experiment_button.png"
+                  title="Save experiment button" width="83%" />
+                </p>
+                <p>
+                  Old experiments will move to the <span style=
+                  "color: #ff0000;">Saved experiments</span> area.
+                  Each tab within the <span style=
+                  "color: #ff0000;">Saved experiments</span> area
+                  represents a prior experiment. Any action that
+                  can be performed within the <span style=
+                  "color: #ff0000;">Active experiment</span> box
+                  can also be performed for a past experiment with
+                  the exception of adding more matings to the
+                  experiment (see bellow in “<em>Tip – carrying out
+                  multiple matings from the same cross</em>”).
+                </p><img alt="Saved experiments area" src=
+                "../../media/uploads/genetics/images/saved_experiments.png"
+                title="Saved experiments area" width="70%" />
+              </li>
+            </ol>
+            <div style=
+            "border: 2px solid #000000; padding: 5px; background-color: #eeeeee; width: 90%;">
+            <p>
+                <strong>Tip - carrying out multiple matings from
+                the same cross</strong>
+              </p>
+              <p>
+                To add additional progeny to a mating:<br />
+                (you might want to do this to increase the
+                statistical significance of your results)
+              </p>
+              <ol>
+                <li>Click on the Mate button next to the Mating
+                site or on the tool bar.
+                </li>
+                <li>A prompt will appear asking if you like to add
+                more progeny to that particular mating. Click Yes.
+                </li>
+              </ol>
+              <p>
+                The number of matings that an organism can perform
+                can be restricted. When this property is specified,
+                the number of remaining matings is reflected in the
+                organism properties section.
+              </p>
+            </div>
+            <h1>
+              <a name="Matings involving progeny"></a>Matings
+              involving progeny
+            </h1>
+            <p>
+              <strong>To reserve a progeny for a future
+              mating:</strong><br />
+              Reserve an organism from a mating result for a future
+              experiment by doing one of the following:
+            </p>
+            <ul>
+              <li>Fly exercises: with the <span style=
+              "color: #ff0000;">Individual</span> tab selected,
+              drag the organism to the <span style=
+              "color: #ff0000;">Strains</span> box.
+              </li>
+              <li>Yeast exercises: drag one of the individual
+              tetrads to the <span style=
+              "outline-width: 1px; outline-style: initial; outline-color: #ff0000; font-size: 13px; vertical-align: baseline; background-image: initial; background-repeat: initial; background-attachment: initial; -webkit-background-clip: initial; -webkit-background-origin: initial; background-color: transparent; color: #ff0000; background-position: initial initial; padding: 0px; margin: 0px; border: 0px initial initial;">
+                Strains</span>box.
+              </li>
+            </ul>
+            <p style="padding-left: 30px;">
+              -OR-
+            </p>
+            <ul>
+              <li>click on the organism/tetrad and then click on
+              the <span style="color: #ff0000;">Add to
+              strains</span> icon at the bottom of the
+                <span style="color: #ff0000;">Strains</span>
+                box.<br />
+                <img alt="Add to Strains button" height="36" src=
+                "../../media/uploads/genetics/images/add_to_strains_button.png"
+                title="Add to Strains button" width="55" />
+              </li>
+            </ul>
+            <p>
+              <br />
+              <strong>To directly use a progeny for a new
+              experiment:</strong><br />
+              You can also use a progeny from a past experiment for
+              a future experiment without reserving it and adding
+              it to the <span style=
+              "color: #ff0000;">Strains</span> box. Click on the
+              progeny and drag it to the <span style=
+              "color: #ff0000;">Mating site</span> or set is as
+              parent as previously described in section “Mating
+              organisms.”
+            </p>
+            <h1>
+              <a name="Punnett Square tool"></a>Punnett Square tool
+            </h1>
+            <p>
+              You can use the <span style="color: #ff0000;">Punnett
+              Square</span> tool to help decipher the genotype of a
+              particular organism after performing a genetic cross.
+              The <span style="color: #ff0000;">Punnett
+              Square</span> tool allows you to determine the
+              expected genotypic distribution of the progeny given
+              the genotypes of the parents.
+            </p>
+            <p>
+              <strong>To use the Punnett Square tool:</strong>
+            </p>
+            <ol>
+              <li>Click on the <span style=
+              "color: #ff0000;">Punnett Square</span> button in the
+              <span style="color: #ff0000;">Tools</span> box.<br />
+
+                <img alt="Tools box" src=
+                "../../media/uploads/genetics/images/tools_box.png"
+                title="Tools box" width="32%" />
+              </li>
+              <li>Select a genotype for each parent:<br />
+                <ul style="margin-bottom: 0;">
+                  <li>AA: homozygous dominant
+                  </li>
+                  <li>Aa: heterozygous
+                  </li>
+                  <li>aa: homozygous recessive
+                  </li>
+                </ul>
+              </li>
+              <li>The genotypic frequencies for the cross are
+              summarized at the bottom of the tool.
+              </li>
+              <li>You can view a monohybrid cross or a dihybrid
+              cross:<br />
+                <img alt="Punnett Square tool - Monohybrid" height=
+                "507" src=
+                "../../media/uploads/genetics/images/Punnett_Square_Monohybrid.png"
+                title="Punnett Square tool - Monohybrid" width=
+                "419" /><br />
+                <br />
+                <img alt="Punnett Square Tool - dihybrid" height=
+                "512" src=
+                "../../media/uploads/genetics/images/Punnett_Square_Dihybrid.png"
+                title="Punnett Square Tool - dihybrid" width=
+                "419" />
+              </li>
+            </ol>
+            <h1>
+              <a name="Yeast Exercises"></a>Yeast Exercises
+            </h1>
+            <p>
+              When you open a yeast exercise, you have two choices
+              for experimental set up:
+            </p>
+            <ul>
+              <li>Non-tetrad experiment
+              </li>
+              <li>Tetrad experiment
+              </li>
+            </ul>
+            <p>
+              <strong>Non-tetrad experiment</strong>
+            </p>
+            <p>
+              This type of experimental set up allows you to:
+            </p>
+            <ol>
+              <li>Test individual or multiple strains in selective
+              media.
+              </li>
+              <li>Perform a complementation test with one or more
+              strains at a time.
+              </li>
+            </ol>
+            <p>
+              <strong>Tetrad experiment</strong>
+            </p>
+            <p>
+              This type of experimental set up allows you to:
+            </p>
+            <ol>
+              <li>Mate two strains at a time and perform a simple
+              complementation test.
+              </li>
+              <li>Mate two strains and sporulate to generate
+              tetrads for tetrad analysis.
+              </li>
+              <li>Mate tetrads to other strains, including MATa or
+              MATalpha tester strains to deduce tetrads' mating
+              type.
+              </li>
+            </ol>
+            <h3>
+              <a name="Non-tetrad experiments"></a>Experiments
+              using the Non-tetrad experimental setup
+            </h3>
+            <ol>
+              <li>Drag a strain to the Drop strain here box. The
+              Drop strain here box moves down to allow the addition
+              of other strains to the same test.
+              </li>
+              <li>Select<br />
+                <ul>
+                  <li>a lawn within the Select lawn box containing
+                  one of the available strains + the appropriate
+                  media within the Select media box to perform a
+                  complementation test<br />
+                    <img alt=
+                    "Non-tetrad experiment complementation test"
+                    src=
+                    "../../media/uploads/genetics/images/StarGenetics_Yeast_Sample_Exercise2.png"
+                    title=
+                    "Non-tetrad experiment complementation test"
+                    width="90%" />
+                  </li>
+                </ul>OR<br />
+                <ul>
+                  <li>the appropriate media within the Select media
+                  box in which you would like to replica plate your
+                  strain(s) to test the strain(s) phenotypes. More
+                  than one media can be selected at a time by
+                  clicking on Crontrol + Command (PC) or Control +
+                  Apple (Mac).<br />
+                    <img alt=
+                    "Non-tetrad experiment replica plating" src=
+                    "../../media/uploads/genetics/images/Screenshot_Star_Genetics_Yeast_Sample_Exercise.png"
+                    title="Non-tetrad experiment replica plating"
+                    width="95%" />
+                  </li>
+                </ul>
+              </li>
+              <li>Click on the Add button at the bottom of the
+              Select media box.
+              </li>
+              <li>Additional experiments can be performed by
+              selecting the appropriate lawn and/or media and then
+              clicking on the Add button.
+              </li>
+            </ol>
+            <h3>
+              <a name="Tetrad experiments"></a>Experiments using
+              the Tetrad experimental setup
+            </h3>
+            <p>
+              <strong>To perform a mating between two
+              strains</strong>
+            </p>
+            <ol>
+              <li>To mate two strains you can use one of the
+              following 2 methods:<br />
+                - drag each strain to the Drop here to mate
+                box<br />
+                OR<br />
+                - click on the strain and then click on the Set as
+                a Parent icon at the bottom of the Strains box.
+              </li>
+              <li>The two strains will automatically mate to
+              produce a diploid.
+              </li>
+              <li>You can either<br />
+                - replicate plate the newly created diploid to do a
+                simple complementation test by selecting the
+                appropriate media within the Select media box.
+                Click on the Add button at the bottom of the Select
+                media box. More than one media can be selected at a
+                time by clicking on Crontrol + Command (PC) or
+                Control + Apple (Mac).<br />
+                <img alt="Tetrad Experiment complementation test"
+                src=
+                "../../media/uploads/genetics/images/Yeast_Mating_Experiment.png"
+                title="Tetrad Experiment complementation test"
+                width="90%" /><br />
+                OR<br />
+                - sporulate the diploid to perform tetrad analysis
+                by clicking on the Sporulate button.
+              </li>
+            </ol>
+            <p>
+              <strong>To conduct tetrad analysis</strong>
+            </p>
+            <ol>
+              <li>Once tetrads are generated (see "To perform a
+              mating between two strains" section), you can perform
+              tetrad analysis by selecting the appropriate media
+              within the Select media box in which you would like
+              to replica plate your tetrads. More than one media
+              can be selected at a time by clicking on Crontrol +
+              Command (PC) or Control + Apple (Mac).
+              </li>
+              <li>Click on the Add button at the bottom of the
+              Select media box.<br />
+                <img alt="Tetrad Experiment tetrad analysis" src=
+                "../../media/uploads/genetics/images/Tetrad_experiment.png"
+                title="Tetrad Experiment tetrad analysis" width=
+                "95%" />
+              </li>
+              <li>To mate the generated tetrads to one of the
+              available strains, select the appropriate strain
+              within the Select lawn box + the appropriate media
+              within the Select media box and click on the Add
+              button at the bottom of the Select media box.
+              </li>
+            </ol>
+            <div style=
+            "border: 2px solid #000000; padding: 5px; background-color: #eeeeee; width: 90%;">
+            <p>
+                <strong>Tip - Annotating Tetrads</strong>
+              </p>
+              <p>
+                To help you keep track of the types of tetrads
+                generated in your matings as you perform your
+                tetrad analysis, click on the Notes text box to the
+                right of the Tetrads section and enter your desired
+                annotation for each tetrad.
+              </p>
+            </div>
+            <h1>
+              <a name=
+              "Renaming experiments and organisms"></a>Renaming
+              experiments &amp; organisms
+            </h1>
+            <p>
+              <strong>To rename an experiment:</strong>
+            </p>
+            <ol>
+              <li>To rename an active experiment, click on the text
+              field containing the experiment's name<br />
+                -OR-<br />
+                To rename a saved experiment, click on the
+                <span style="color: #ff0000;">Rename</span> button
+              </li>
+              <li>Enter the new name into the prompt and click
+              <span style="color: #ff0000;">OK</span>.
+              </li>
+            </ol>
+            <p>
+              <strong>To rename an organism/strain:</strong>
+            </p>
+            <ol>
+              <li>To rename an individual organism/strain first
+              click on the organism/strain. The organism's/strain's
+              properties will appear in the<span style=
+              "color: #ff0000;">Properties</span> box on the left
+              hand corner.<br />
+                <img alt="fly properties" src=
+                "../../media/uploads/genetics/images/fly_properties.png"
+                title="fly properties" width="35%" />
+              </li>
+              <li>Click the "Name" text field.
+              </li>
+              <li>Enter the new name into the prompt and click
+              <span style="color: #ff0000;">OK</span>.<br />
+                <img alt="rename organism prompt" src=
+                "../../media/uploads/genetics/images/rename_organism_prompt.png"
+                title="rename organism prompt" width="50%" />
+              </li>
+            </ol>
+            <div style=
+            "border: 2px solid #000000; padding: 5px; background-color: #eeeeee; width: 90%;">
+            <p>
+                <strong>Tip – finding more information about an
+                organism</strong><br />
+                For fly exercises, the properties dialog describes
+                phenotypic characteristics (i.e. body color &amp;
+                wing size) as well as non-phenotypic
+                characteristics (i.e. number of matings the
+                organism can perform). You can use the <span style=
+                "color: #ff0000;">Note</span> box to write any
+                relevant information about the organism/strain in
+                question such as its genotype and the type of
+                mutation exhibited by the organism/strain (i.e.
+                dominant vs. recessive). Notes entered will appear
+                to the right of the organism/strain within the
+                <span style="color: #ff0000;">Strains <span style=
+                "color: #000000;">box.</span></span>
+              </p>
+            </div>
+            <h1>
+              <a name=
+              "Discarding experiments &amp; removing organisms"></a>Discarding
+              experiments &amp; removing organisms
+            </h1>
+            <p>
+              <strong>To discard an experiment:</strong>
+            </p>
+            <ol>
+              <li>Click on the <span style=
+              "color: #ff0000;">Discard</span> button next to the
+              <span style="color: #ff0000;">Mating</span> button
+              (Fly exercise) or<span style="color: #ff0000;">Save
+              experiment</span> <span style=
+              "color: #ff0000;"><span style=
+              "color: #000000;">button (Yeast
+              exercise)</span></span>.
+              </li>
+              <li>A prompt will appear asking if you are sure you
+              want to discard the experiment.
+              </li>
+              <li>Click <span style="color: #ff0000;">OK</span>.
+              </li>
+            </ol>
+            <p>
+              <strong>To remove an organism:</strong>
+            </p>
+            <p>
+              To remove an organism/strain from the <span style=
+              "color: #ff0000;">Strains box</span>, click on the
+              organism/strain and then click on the <span style=
+              "color: #ff0000;">Remove</span> icon at the bottom of
+              the <span style="color: #ff0000;">Strains</span> box.
+            </p>
+            <p>
+              <img alt="Remove organism button" height="31" src=
+              "../../media/uploads/genetics/images/remove_organism_button.png"
+              title="Remove organism button" width="51" />
+            </p>
+            <ul>
+              <li>You can remove an organism/strain from the
+              <span style="color: #ff0000;">Strains</span> box.
+              </li>
+              <li>You can't remove an organism/strain from the
+              <span style="color: #ff0000;">Mating site</span>, but
+              you can replace it with another organism/strain.
+              </li>
+              <li>You can't remove an organism/strain from the
+              resulting progeny of a mating experiment.
+              </li>
+            </ul>
+            <h1>
+              <a name="Saving experiments"></a>Saving experiments
+            </h1>
+            <p>
+              <strong>To save your work so that it can be accessed
+              at a later time:</strong>
+            </p>
+            <ol>
+              <li>Click on <span style="color: #ff0000;">File -&gt;
+              Save</span>.
+              </li>
+              <li>In the “Save As” field box, enter your desired
+              name for the file.
+              </li>
+              <li>To access the experiment at a later time, open
+              StarGenetics. Click on <span style="color: #ff0000;">
+                File -&gt; Open</span> and click on the previously
+                saved file.
+              </li>
+            </ol>
+            <h1>
+              <a name="Exporting data"></a>Exporting data
+            </h1>
+            <p>
+              <strong>To export the data generated in your
+              StarGenetics experiments:</strong>
+            </p>
+            <ol>
+              <li>Click on <span style="color: #ff0000;">File -&gt;
+              Export to Excel</span>.
+              </li>
+              <li>In the “Save As” field box, enter your desired
+              name for the file.
+              </li>
+              <li>Open the Excel file. The first tab within the
+              Excel file corresponds to a summary of all your
+              "Saved experiments". A summary of the "Discarded
+              experiments" is available in a second tab.
+              </li>
+            </ol>
+            <p>
+              Note: exporting data is currently only available for
+              "Fly exercises".
+            </p>
+            <h1>
+              <a name=
+              "Reporting bugs or asking questions"></a>Reporting
+              bugs or asking questions
+            </h1>
+            <p>
+              <strong>To report a bug, request a feature, make a
+              comment,or ask a question on StarGenetics:</strong>
+            </p>
+            <ol>
+              <li>Click on the <span style="color: #ff0000;">Send
+              suggestions</span>button in the <span style=
+              "color: #ff0000;">Tools</span> box (Fly exercises)
+              or<span style=
+              "color: #ff0000;">Send</span><span style=
+              "color: #ff0000;">Suggestion <span style=
+              "color: #000000;">box (Yeast
+              exercises)</span></span>.<br />
+                <img alt="Send suggestions button" src=
+                "../../media/uploads/genetics/images/send_suggestions.png"
+                title="Send suggestions button" width="30%" />
+              </li>
+              <li>Fill out the feedback form and click on
+              <span style="color: #ff0000;">Send Report</span>.
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+          <p>
+            <a href="../index.html">Home</a>
+          </p>
+          <p>
+            <a href="index.html">User Manual</a>
+          </p>
+          <p>
+            <a href="../tutorial/index.html">Video Tutorial</a>
+          </p>
+          <p>
+            <a href="../screenshots/index.html">Screenshots</a>
+          </p>
+          <p>
+            <a href="../problemsets/index.html">Sample
+            Exercises</a>
+          </p>
+          <p>
+            <a href=
+            "../problemsets/development/index.html">Instructor
+            Resources</a>
+          </p>
+          <p>
+            <a href="../download/index.html">Download</a>
+          </p>
+          <p>
+            <a href="../runapp_beta.html">Beta Version</a>
+          </p>
+          <p>
+            <a href="../previous_versions/index.html">Previous
+            Versions</a>
+          </p>
+          <p>
+            <a href=
+            "https://giving.mit.edu/givenow/add-designation.dyn?designationId=2742943"
+            onclick=
+            "_gaq.push(['_trackEvent', 'STAR', 'Donate', 'Genetics']);">
+            <img src="../../media/uploads/link_buttons/donate.png"
+            title="Donate to STAR project" /></a>
+          </p>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div><!--<div class="related wiki-nav">
+<h3>Navigation</h3>
+<ul>
+    <li><a href="/">Wiki Home</a></li> | 
+    
+        <li><a href="/star/newproject/create">Add Project</a></li> |
+    
+
+    
+        
+            <li><a href="/star/genetics/menu">Edit Menu</a></li> |
+        
+    
+
+    
+        <li><a href="/star/genetics/documentation/index.html/edit">Edit Page</a></li> |
+        <li><a href="/star/genetics/documentation/index.html/preview" target=_blank>Preview Page</a></li> |
+    
+
+    <li><a href="/publish">Publish</a></li> |
+    
+            <li><a href="/star/genetics/sitemap.xml">Sitemap</a></li> |
+    
+     
+    
+    <li><a href="/admin/">Admin Panel</a></li> |
+    <li><a href="/admin/filebrowser/browse/">File Browser</a></li>
+</ul>
+</div>
+-->
+    <div class="footer">
+      <table border="0" style="width: 100%; height: 30px;">
+        <tbody>
+          <tr>
+            <td style="width: 230px;">
+              <p>
+                <a href="http://web.mit.edu" title=
+                "MIT Homepage"><img alt="MIT Logo" height="36" src=
+                "../../media/images/mit-logo-grey-white.gif" title=
+                "MIT Logo" width="62" /></a>
+              </p>
+            </td>
+            <td style="width: 100%;">
+              <p style="text-align: center;">
+                <a href="http://oeit.mit.edu" title=
+                "OEIT Homepage">OEIT</a> | <a href=
+                "http://whereis.mit.edu/?selection=NE48" title=
+                "Building NE48 room 308">NE48-308</a> | <a href=
+                "tel:+16172521981">617-252-1981</a> | <a href=
+                "javascript:%20window.location.href='mail'%20+%20'to'%20+':%20'%20+%20'star'+%20String.fromCharCode(64)%20+%20'mit'%20+%20'.'%20+%20'edu'">
+                Contact Us</a><br />
+                <a href="http://web.mit.edu" title=
+                "MIT Homepage">Massachusetts Institute of
+                Technology</a> | <a href="http://web.mit.edu/due"
+                title="DUE Homepage">Dean for Undergraduate
+                Education</a>
+              </p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

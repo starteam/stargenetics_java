@@ -31,15 +31,24 @@
 		<exec executable="/usr/local/bin/wget" dir="${basedir}/src/resources">
 			<arg value="-r"/>
 			<arg value="--level=1"/>
-			<arg value="http://web.mit.edu/star/genetics/problemsets/samples_body.html"/>
+			<arg value="http://star.mit.edu/genetics/problemsets/samples_body.html"/>
 		</exec>
 	</target>
+	<target name="update_samples_ht">
+		<echo>Downloading samples</echo>		
+		<exec executable="/usr/local/bin/wget" dir="${basedir}/src/resources">
+			<arg value="-r"/>
+			<arg value="--level=1"/>
+			<arg value="http://star.mit.edu/genetics/problemsets/samples_body_ht.html"/>
+		</exec>
+	</target>
+
 
 	<target name="publish" depends="build">
 		<echo>Publishing and signing</echo>
 		<exec executable="scp">
 			<arg value="StarGenetics.jar" />
-			<arg value="bonners@starapp.mit.edu:/home/star/star/media/uploads/star/jar/genetics3/StarGenetics3.jar" />
+			<arg value="ceraj@starapp.mit.edu:/home/star/star/media/uploads/star/jar/genetics3/StarGenetics3.jar" />
 		</exec>
 		
 		<exec executable="ssh">
@@ -49,7 +58,7 @@
 			<arg value="ceraj" />
 -->
 			
-			<arg value="bonners@starapp.mit.edu"/>
+			<arg value="ceraj@starapp.mit.edu"/>
 			<arg value="sudo"/>
 			<arg value="/home/star/build/sign_genetics3.sh" />
 			
@@ -148,7 +157,7 @@
 		-->
 	</target>
 
-	<target name="jar" depends="update_samples">
+	<target name="jar" depends="update_samples,update_samples_ht">
 		<echo>Creating JAR</echo>
 		<jar destfile="StarGenetics.jar">
 			<fileset dir="build" id="build">
