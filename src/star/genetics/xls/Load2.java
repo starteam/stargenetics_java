@@ -439,6 +439,7 @@ public class Load2
 				String key = String.valueOf(r.getCell(r.getFirstCellNum() + 0));
 				String value = String.valueOf(r.getCell((r.getFirstCellNum() + 1)));
 				modelSheet.put(key,value);
+				
 				if (key.toLowerCase().startsWith(Properties.NAME.toString().toLowerCase()))
 				{
 					genome.setName(value);
