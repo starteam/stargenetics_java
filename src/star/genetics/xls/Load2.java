@@ -27,6 +27,7 @@ import star.genetics.genetic.impl.GelRulesImpl;
 import star.genetics.genetic.impl.GeneImpl;
 import star.genetics.genetic.impl.GeneticMakeupImpl;
 import star.genetics.genetic.impl.MatingEngineMetadata;
+import star.genetics.genetic.impl.ModelPropertiesSheet;
 import star.genetics.genetic.impl.YeastUIMetadata;
 import star.genetics.genetic.model.Allele;
 import star.genetics.genetic.model.Chromosome;
@@ -422,6 +423,13 @@ public class Load2
 	private void parsePropertiesSheet(HSSFSheet sheet, ModelWriter model, star.genetics.genetic.model.Genome genome)
 	{
 		@SuppressWarnings("unchecked")
+		ModelPropertiesSheet modelSheet = (ModelPropertiesSheet) model.getModelMetadata().get(ModelPropertiesSheet.class);
+		if(modelSheet == null )
+		{
+			modelSheet = new ModelPropertiesSheet();
+		}
+		model.getModelMetadata().put(ModelPropertiesSheet.class, modelSheet);
+		
 		Iterator<HSSFRow> rows = sheet.rowIterator();
 		while (rows.hasNext())
 		{
@@ -430,6 +438,7 @@ public class Load2
 			{
 				String key = String.valueOf(r.getCell(r.getFirstCellNum() + 0));
 				String value = String.valueOf(r.getCell((r.getFirstCellNum() + 1)));
+				modelSheet.put(key,value);
 				if (key.toLowerCase().startsWith(Properties.NAME.toString().toLowerCase()))
 				{
 					genome.setName(value);
@@ -497,7 +506,7 @@ public class Load2
 					metadata.set(Properties.IDENTICALTWINSFREQUENCY, value);
 					model.getModelMetadata().put(MatingEngineMetadata.class, metadata);
 				}
-
+								
 			}
 		}
 
