@@ -10,7 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.eclipse.jetty.websocket.WebSocket;
 import org.eclipse.jetty.websocket.WebSocketFactory;
 
-public class WebSocketHandler extends HttpServlet {
+public class WebSocketHandler extends HttpServlet
+{
 
 	private static final long serialVersionUID = 1L;
 	private WebSocketFactory _wsFactory;
@@ -18,25 +19,32 @@ public class WebSocketHandler extends HttpServlet {
 	public static StarXWebSocket messageHandler;
 
 	@Override
-	public void init() throws ServletException {
+	public void init() throws ServletException
+	{
 		// Create and configure WS factor
-		_wsFactory = new WebSocketFactory(new WebSocketFactory.Acceptor() {
-			public boolean checkOrigin(HttpServletRequest request, String origin) {
+		_wsFactory = new WebSocketFactory(new WebSocketFactory.Acceptor()
+		{
+			public boolean checkOrigin(HttpServletRequest request, String origin)
+			{
 				// Allow all origins
 				return true;
 			}
 
-			public WebSocket doWebSocketConnect(HttpServletRequest request,
-					String protocol) {
+			public WebSocket doWebSocketConnect(HttpServletRequest request, String protocol)
+			{
 				if ("stargenetics".equals(protocol))
-					return new StarXWebSocket();
+				{
+					messageHandler = new StarXWebSocket();
+					return messageHandler;
+				}
 				return null;
 			}
 
-		}) {
+		})
+		{
 			@Override
-			public boolean acceptWebSocket(HttpServletRequest arg0,
-					HttpServletResponse arg1) throws IOException {
+			public boolean acceptWebSocket(HttpServletRequest arg0, HttpServletResponse arg1) throws IOException
+			{
 				return super.acceptWebSocket(arg0, arg1);
 			}
 
@@ -45,11 +53,41 @@ public class WebSocketHandler extends HttpServlet {
 		_wsFactory.setMaxIdleTime(60000);
 	}
 
-	protected void doGet(HttpServletRequest request,
-			HttpServletResponse response) throws IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException
+	{
 		if (_wsFactory.acceptWebSocket(request, response))
 			return;
-		response.sendError(HttpServletResponse.SC_SERVICE_UNAVAILABLE,
-				"Websocket only");
+		else if (messageHandler != null)
+		{
+			String data = request.getParameter("data");
+			messageHandler.onMessage(data);
+		}
+		else
+		{
+			response.sendError(HttpServletResponse.SC_SERVICE_UNAVAILABLE, "Websocket only");
+		}
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException
+	{
+		if (messageHandler != null)
+		{
+			response.addHeader("Access-Control-Allow-Origin", "*");
+			response.addHeader("Access-Control-Allow-Methods", "POST OPTIONS");
+			response.addHeader("Access-Control-Allow-Headers", "X-Requested-With");
+			response.addHeader("Access-Control-Allow-Headers", "X-CSRFToken");
+
+			String data = request.getParameter("data");
+			messageHandler.onMessage(data);
+		}
+	}
+
+	@Override
+	protected void doOptions(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+	{
+		response.addHeader("Access-Control-Allow-Origin", "*");
+		response.addHeader("Access-Control-Allow-Methods", "POST OPTIONS");
+		response.addHeader("Access-Control-Allow-Headers", "X-Requested-With");
+		response.addHeader("Access-Control-Allow-Headers", "X-CSRFToken");
 	}
 }
