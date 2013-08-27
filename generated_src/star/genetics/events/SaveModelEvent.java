@@ -6,19 +6,19 @@ public class SaveModelEvent extends star.event.Event
 {
 	private static final long serialVersionUID = 1L;
 
-	public  SaveModelEvent(star.event.Raiser raiser, boolean valid)
+	public SaveModelEvent(star.event.Raiser raiser, boolean valid)
 	{
-		super( raiser , valid ) ;
+		super(raiser, valid);
 	}
-	 
-	public  SaveModelEvent(star.genetics.events.SaveModelEvent event)
+
+	public SaveModelEvent(star.genetics.events.SaveModelEvent event)
 	{
-		super( event ) ;
+		super(event);
 	}
-	 
-	public  SaveModelEvent(star.genetics.events.SaveModelRaiser raiser)
+
+	public SaveModelEvent(star.genetics.events.SaveModelRaiser raiser)
 	{
-		super( raiser ) ;
+		super(raiser);
 	}
-	 
+
 }

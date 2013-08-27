@@ -6,19 +6,19 @@ public class ListItemSelectedEvent extends star.event.Event
 {
 	private static final long serialVersionUID = 1L;
 
-	public  ListItemSelectedEvent(star.event.Raiser raiser, boolean valid)
+	public ListItemSelectedEvent(star.event.Raiser raiser, boolean valid)
 	{
-		super( raiser , valid ) ;
+		super(raiser, valid);
 	}
-	 
-	public  ListItemSelectedEvent(star.genetics.v1.ui.events.ListItemSelectedEvent event)
+
+	public ListItemSelectedEvent(star.genetics.v1.ui.events.ListItemSelectedEvent event)
 	{
-		super( event ) ;
+		super(event);
 	}
-	 
-	public  ListItemSelectedEvent(star.genetics.v1.ui.events.ListItemSelectedRaiser raiser)
+
+	public ListItemSelectedEvent(star.genetics.v1.ui.events.ListItemSelectedRaiser raiser)
 	{
-		super( raiser ) ;
+		super(raiser);
 	}
-	 
+
 }

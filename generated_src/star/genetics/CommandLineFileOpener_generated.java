@@ -7,31 +7,31 @@ abstract class CommandLineFileOpener_generated extends java.lang.Object implemen
 	private star.event.Adapter adapter;
 	private static final long serialVersionUID = 1L;
 
-	public  CommandLineFileOpener_generated()
+	public CommandLineFileOpener_generated()
 	{
 		super();
 	}
-	 
+
 	public void addNotify()
 	{
 	}
-	 
+
 	public star.event.Adapter getAdapter()
 	{
-		if( adapter == null )
+		if (adapter == null)
 		{
 			adapter = new star.event.Adapter(this);
 		}
 		return adapter;
 	}
-	 
+
 	public void raise_OpenModelEvent()
 	{
 		(new star.genetics.events.OpenModelEvent(this)).raise();
 	}
-	 
+
 	public void removeNotify()
 	{
 	}
-	 
+
 }

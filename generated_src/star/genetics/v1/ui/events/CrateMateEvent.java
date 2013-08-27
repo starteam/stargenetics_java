@@ -6,19 +6,19 @@ public class CrateMateEvent extends star.event.Event
 {
 	private static final long serialVersionUID = 1L;
 
-	public  CrateMateEvent(star.event.Raiser raiser, boolean valid)
+	public CrateMateEvent(star.event.Raiser raiser, boolean valid)
 	{
-		super( raiser , valid ) ;
+		super(raiser, valid);
 	}
-	 
-	public  CrateMateEvent(star.genetics.v1.ui.events.CrateMateEvent event)
+
+	public CrateMateEvent(star.genetics.v1.ui.events.CrateMateEvent event)
 	{
-		super( event ) ;
+		super(event);
 	}
-	 
-	public  CrateMateEvent(star.genetics.v1.ui.events.CrateMateRaiser raiser)
+
+	public CrateMateEvent(star.genetics.v1.ui.events.CrateMateRaiser raiser)
 	{
-		super( raiser ) ;
+		super(raiser);
 	}
-	 
+
 }

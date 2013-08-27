@@ -7,71 +7,77 @@ abstract class History_generated extends star.genetics.v2.ui.common.TitledContai
 	private star.event.Adapter adapter;
 	private static final long serialVersionUID = 1L;
 
-	public  History_generated()
+	public History_generated()
 	{
 		super();
 	}
-	 
-	public  History_generated(java.awt.Component component, java.awt.Component component0, boolean boolean1, float float2, float float3)
+
+	public History_generated(java.awt.Component component, java.awt.Component component0, boolean boolean1, float float2, float float3)
 	{
-		super(component,component0,boolean1,float2,float3);
+		super(component, component0, boolean1, float2, float3);
 	}
-	 
-	public  History_generated(java.awt.Component component, java.awt.Component component0, boolean boolean1)
+
+	public History_generated(java.awt.Component component, java.awt.Component component0, boolean boolean1)
 	{
-		super(component,component0,boolean1);
+		super(component, component0, boolean1);
 	}
-	 
+
 	public void addNotify()
 	{
 		super.addNotify();
-		getAdapter().addHandled( star.genetics.events.LoadModelEvent.class );
-		getAdapter().addHandled( star.genetics.v1.ui.events.CrateNewCrateEvent.class );
+		getAdapter().addHandled(star.genetics.events.LoadModelEvent.class);
+		getAdapter().addHandled(star.genetics.v1.ui.events.CrateNewCrateEvent.class);
 	}
-	 
+
 	public void eventRaised(final star.event.Event event)
 	{
 		eventRaisedHandles(event);
 	}
-	 
+
 	private void eventRaisedHandles(final star.event.Event event)
 	{
-		if( event.getClass().getName().equals( "star.genetics.events.LoadModelEvent" ) && event.isValid() ) 
+		if (event.getClass().getName().equals("star.genetics.events.LoadModelEvent") && event.isValid())
 		{
-			 long start = System.nanoTime();
-			
-			updateCrates( (star.genetics.events.LoadModelRaiser)event.getSource());
-			 long end = System.nanoTime();
-			 if( end - start > 500000000 ) { System.out.println( this.getClass().getName() + ".updateCrates "  + ( end-start )/1000000 ); } 
+			long start = System.nanoTime();
+
+			updateCrates((star.genetics.events.LoadModelRaiser) event.getSource());
+			long end = System.nanoTime();
+			if (end - start > 500000000)
+			{
+				System.out.println(this.getClass().getName() + ".updateCrates " + (end - start) / 1000000);
+			}
 		}
-		if( event.getClass().getName().equals( "star.genetics.v1.ui.events.CrateNewCrateEvent" ) && event.isValid() ) 
+		if (event.getClass().getName().equals("star.genetics.v1.ui.events.CrateNewCrateEvent") && event.isValid())
 		{
-			 long start = System.nanoTime();
-			
-			updateCrates( (star.genetics.v1.ui.events.CrateNewCrateRaiser)event.getSource());
-			 long end = System.nanoTime();
-			 if( end - start > 500000000 ) { System.out.println( this.getClass().getName() + ".updateCrates "  + ( end-start )/1000000 ); } 
+			long start = System.nanoTime();
+
+			updateCrates((star.genetics.v1.ui.events.CrateNewCrateRaiser) event.getSource());
+			long end = System.nanoTime();
+			if (end - start > 500000000)
+			{
+				System.out.println(this.getClass().getName() + ".updateCrates " + (end - start) / 1000000);
+			}
 		}
 	}
-	 
+
 	public star.event.Adapter getAdapter()
 	{
-		if( adapter == null )
+		if (adapter == null)
 		{
 			adapter = new star.event.Adapter(this);
 		}
 		return adapter;
 	}
-	 
+
 	public void removeNotify()
 	{
 		super.removeNotify();
-		getAdapter().removeHandled( star.genetics.events.LoadModelEvent.class );
-		getAdapter().removeHandled( star.genetics.v1.ui.events.CrateNewCrateEvent.class );
+		getAdapter().removeHandled(star.genetics.events.LoadModelEvent.class);
+		getAdapter().removeHandled(star.genetics.v1.ui.events.CrateNewCrateEvent.class);
 	}
-	 
+
 	abstract void updateCrates(star.genetics.events.LoadModelRaiser LoadModelRaiser);
-	 
+
 	abstract void updateCrates(star.genetics.v1.ui.events.CrateNewCrateRaiser CrateNewCrateRaiser);
-	 
+
 }

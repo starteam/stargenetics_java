@@ -6,19 +6,19 @@ public class CrateNewCrateEvent extends star.event.Event
 {
 	private static final long serialVersionUID = 1L;
 
-	public  CrateNewCrateEvent(star.event.Raiser raiser, boolean valid)
+	public CrateNewCrateEvent(star.event.Raiser raiser, boolean valid)
 	{
-		super( raiser , valid ) ;
+		super(raiser, valid);
 	}
-	 
-	public  CrateNewCrateEvent(star.genetics.v1.ui.events.CrateNewCrateEvent event)
+
+	public CrateNewCrateEvent(star.genetics.v1.ui.events.CrateNewCrateEvent event)
 	{
-		super( event ) ;
+		super(event);
 	}
-	 
-	public  CrateNewCrateEvent(star.genetics.v1.ui.events.CrateNewCrateRaiser raiser)
+
+	public CrateNewCrateEvent(star.genetics.v1.ui.events.CrateNewCrateRaiser raiser)
 	{
-		super( raiser ) ;
+		super(raiser);
 	}
-	 
+
 }

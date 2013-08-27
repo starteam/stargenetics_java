@@ -8,76 +8,82 @@ abstract class Add_generated extends star.genetics.v2.ui.common.Button implement
 	private star.genetics.genetic.model.Creature selectedCreature;
 	private static final long serialVersionUID = 1L;
 
-	public  Add_generated()
+	public Add_generated()
 	{
 		super();
 	}
-	 
+
 	public void addNotify()
 	{
 		super.addNotify();
-		getAdapter().addHandled( star.genetics.v1.ui.events.CrateNewCrateEvent.class );
-		getAdapter().addHandled( star.genetics.v1.ui.events.ProgenySelectedEvent.class );
+		getAdapter().addHandled(star.genetics.v1.ui.events.CrateNewCrateEvent.class);
+		getAdapter().addHandled(star.genetics.v1.ui.events.ProgenySelectedEvent.class);
 	}
-	 
+
 	abstract void disableOnNewCrate(star.genetics.v1.ui.events.CrateNewCrateRaiser CrateNewCrateRaiser);
-	 
+
 	abstract void enableOnProgenies(star.genetics.v1.ui.events.ProgenySelectedRaiser ProgenySelectedRaiser);
-	 
+
 	public void eventRaised(final star.event.Event event)
 	{
 		eventRaisedHandles(event);
 	}
-	 
+
 	private void eventRaisedHandles(final star.event.Event event)
 	{
-		if( event.getClass().getName().equals( "star.genetics.v1.ui.events.CrateNewCrateEvent" ) && event.isValid() ) 
+		if (event.getClass().getName().equals("star.genetics.v1.ui.events.CrateNewCrateEvent") && event.isValid())
 		{
-			 long start = System.nanoTime();
-			
-			disableOnNewCrate( (star.genetics.v1.ui.events.CrateNewCrateRaiser)event.getSource());
-			 long end = System.nanoTime();
-			 if( end - start > 500000000 ) { System.out.println( this.getClass().getName() + ".disableOnNewCrate "  + ( end-start )/1000000 ); } 
+			long start = System.nanoTime();
+
+			disableOnNewCrate((star.genetics.v1.ui.events.CrateNewCrateRaiser) event.getSource());
+			long end = System.nanoTime();
+			if (end - start > 500000000)
+			{
+				System.out.println(this.getClass().getName() + ".disableOnNewCrate " + (end - start) / 1000000);
+			}
 		}
-		if( event.getClass().getName().equals( "star.genetics.v1.ui.events.ProgenySelectedEvent" ) && event.isValid() ) 
+		if (event.getClass().getName().equals("star.genetics.v1.ui.events.ProgenySelectedEvent") && event.isValid())
 		{
-			 long start = System.nanoTime();
-			
-			enableOnProgenies( (star.genetics.v1.ui.events.ProgenySelectedRaiser)event.getSource());
-			 long end = System.nanoTime();
-			 if( end - start > 500000000 ) { System.out.println( this.getClass().getName() + ".enableOnProgenies "  + ( end-start )/1000000 ); } 
+			long start = System.nanoTime();
+
+			enableOnProgenies((star.genetics.v1.ui.events.ProgenySelectedRaiser) event.getSource());
+			long end = System.nanoTime();
+			if (end - start > 500000000)
+			{
+				System.out.println(this.getClass().getName() + ".enableOnProgenies " + (end - start) / 1000000);
+			}
 		}
 	}
-	 
+
 	public star.event.Adapter getAdapter()
 	{
-		if( adapter == null )
+		if (adapter == null)
 		{
 			adapter = new star.event.Adapter(this);
 		}
 		return adapter;
 	}
-	 
+
 	public star.genetics.genetic.model.Creature getSelectedCreature()
 	{
-		return this.selectedCreature ;
+		return this.selectedCreature;
 	}
-	 
+
 	public void raise_ProgenyAddProgenyEvent()
 	{
 		(new star.genetics.v1.ui.events.ProgenyAddProgenyEvent(this)).raise();
 	}
-	 
+
 	public void removeNotify()
 	{
 		super.removeNotify();
-		getAdapter().removeHandled( star.genetics.v1.ui.events.CrateNewCrateEvent.class );
-		getAdapter().removeHandled( star.genetics.v1.ui.events.ProgenySelectedEvent.class );
+		getAdapter().removeHandled(star.genetics.v1.ui.events.CrateNewCrateEvent.class);
+		getAdapter().removeHandled(star.genetics.v1.ui.events.ProgenySelectedEvent.class);
 	}
-	 
+
 	protected void setSelectedCreature(star.genetics.genetic.model.Creature selectedCreature)
 	{
-		this.selectedCreature = selectedCreature ;
+		this.selectedCreature = selectedCreature;
 	}
-	 
+
 }

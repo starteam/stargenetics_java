@@ -6,19 +6,19 @@ public class NextFrameEvent extends star.event.Event
 {
 	private static final long serialVersionUID = 1L;
 
-	public  NextFrameEvent(star.event.Raiser raiser, boolean valid)
+	public NextFrameEvent(star.event.Raiser raiser, boolean valid)
 	{
-		super( raiser , valid ) ;
+		super(raiser, valid);
 	}
-	 
-	public  NextFrameEvent(star.genetics.v1.ui.events.NextFrameEvent event)
+
+	public NextFrameEvent(star.genetics.v1.ui.events.NextFrameEvent event)
 	{
-		super( event ) ;
+		super(event);
 	}
-	 
-	public  NextFrameEvent(star.genetics.v1.ui.events.NextFrameRaiser raiser)
+
+	public NextFrameEvent(star.genetics.v1.ui.events.NextFrameRaiser raiser)
 	{
-		super( raiser ) ;
+		super(raiser);
 	}
-	 
+
 }

@@ -6,19 +6,19 @@ public class ShowHistoryEvent extends star.event.Event
 {
 	private static final long serialVersionUID = 1L;
 
-	public  ShowHistoryEvent(star.event.Raiser raiser, boolean valid)
+	public ShowHistoryEvent(star.event.Raiser raiser, boolean valid)
 	{
-		super( raiser , valid ) ;
+		super(raiser, valid);
 	}
-	 
-	public  ShowHistoryEvent(star.genetics.v1.ui.events.ShowHistoryEvent event)
+
+	public ShowHistoryEvent(star.genetics.v1.ui.events.ShowHistoryEvent event)
 	{
-		super( event ) ;
+		super(event);
 	}
-	 
-	public  ShowHistoryEvent(star.genetics.v1.ui.events.ShowHistoryRaiser raiser)
+
+	public ShowHistoryEvent(star.genetics.v1.ui.events.ShowHistoryRaiser raiser)
 	{
-		super( raiser ) ;
+		super(raiser);
 	}
-	 
+
 }

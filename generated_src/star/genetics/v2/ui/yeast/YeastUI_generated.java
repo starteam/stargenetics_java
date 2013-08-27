@@ -7,100 +7,110 @@ abstract class YeastUI_generated extends javax.swing.JPanel implements star.even
 	private star.event.Adapter adapter;
 	private static final long serialVersionUID = 1L;
 
-	public  YeastUI_generated()
+	public YeastUI_generated()
 	{
 		super();
 	}
-	 
-	public  YeastUI_generated(boolean boolean0)
+
+	public YeastUI_generated(boolean boolean0)
 	{
 		super(boolean0);
 	}
-	 
-	public  YeastUI_generated(java.awt.LayoutManager layoutManager, boolean boolean0)
+
+	public YeastUI_generated(java.awt.LayoutManager layoutManager, boolean boolean0)
 	{
-		super(layoutManager,boolean0);
+		super(layoutManager, boolean0);
 	}
-	 
-	public  YeastUI_generated(java.awt.LayoutManager layoutManager)
+
+	public YeastUI_generated(java.awt.LayoutManager layoutManager)
 	{
 		super(layoutManager);
 	}
-	 
+
 	public void addNotify()
 	{
 		super.addNotify();
-		getAdapter().addHandled( star.genetics.v1.ui.events.CrateNewCrateEvent.class );
-		getAdapter().addHandled( star.genetics.v2.yeast.events.NewReplicationExperimentEvent.class );
-		getAdapter().addHandled( star.genetics.v2.yeast.events.NewMatingExperimentEvent.class );
+		getAdapter().addHandled(star.genetics.v1.ui.events.CrateNewCrateEvent.class);
+		getAdapter().addHandled(star.genetics.v2.yeast.events.NewReplicationExperimentEvent.class);
+		getAdapter().addHandled(star.genetics.v2.yeast.events.NewMatingExperimentEvent.class);
 	}
-	 
+
 	public void eventRaised(final star.event.Event event)
 	{
 		eventRaisedHandles(event);
 	}
-	 
+
 	private void eventRaisedHandles(final star.event.Event event)
 	{
-		if( event.getClass().getName().equals( "star.genetics.v1.ui.events.CrateNewCrateEvent" ) && event.isValid() ) 
+		if (event.getClass().getName().equals("star.genetics.v1.ui.events.CrateNewCrateEvent") && event.isValid())
 		{
-			 long start = System.nanoTime();
-			
-			handle( (star.genetics.v1.ui.events.CrateNewCrateRaiser)event.getSource());
-			 long end = System.nanoTime();
-			 if( end - start > 500000000 ) { System.out.println( this.getClass().getName() + ".handle "  + ( end-start )/1000000 ); } 
+			long start = System.nanoTime();
+
+			handle((star.genetics.v1.ui.events.CrateNewCrateRaiser) event.getSource());
+			long end = System.nanoTime();
+			if (end - start > 500000000)
+			{
+				System.out.println(this.getClass().getName() + ".handle " + (end - start) / 1000000);
+			}
 		}
-		if( event.getClass().getName().equals( "star.genetics.v2.yeast.events.NewReplicationExperimentEvent" ) && event.isValid() ) 
+		if (event.getClass().getName().equals("star.genetics.v2.yeast.events.NewReplicationExperimentEvent") && event.isValid())
 		{
-			 long start = System.nanoTime();
-			
-			handle( (star.genetics.v2.yeast.events.NewReplicationExperimentRaiser)event.getSource());
-			 long end = System.nanoTime();
-			 if( end - start > 500000000 ) { System.out.println( this.getClass().getName() + ".handle "  + ( end-start )/1000000 ); } 
+			long start = System.nanoTime();
+
+			handle((star.genetics.v2.yeast.events.NewReplicationExperimentRaiser) event.getSource());
+			long end = System.nanoTime();
+			if (end - start > 500000000)
+			{
+				System.out.println(this.getClass().getName() + ".handle " + (end - start) / 1000000);
+			}
 		}
-		if( event.getClass().getName().equals( "star.genetics.v2.yeast.events.NewMatingExperimentEvent" ) && event.isValid() ) 
+		if (event.getClass().getName().equals("star.genetics.v2.yeast.events.NewMatingExperimentEvent") && event.isValid())
 		{
-			 long start = System.nanoTime();
-			
-			handle( (star.genetics.v2.yeast.events.NewMatingExperimentRaiser)event.getSource());
-			 long end = System.nanoTime();
-			 if( end - start > 500000000 ) { System.out.println( this.getClass().getName() + ".handle "  + ( end-start )/1000000 ); } 
+			long start = System.nanoTime();
+
+			handle((star.genetics.v2.yeast.events.NewMatingExperimentRaiser) event.getSource());
+			long end = System.nanoTime();
+			if (end - start > 500000000)
+			{
+				System.out.println(this.getClass().getName() + ".handle " + (end - start) / 1000000);
+			}
 		}
 	}
-	 
+
 	public star.event.Adapter getAdapter()
 	{
-		if( adapter == null )
+		if (adapter == null)
 		{
 			adapter = new star.event.Adapter(this);
 		}
 		return adapter;
 	}
-	 
+
 	abstract void handle(star.genetics.v1.ui.events.CrateNewCrateRaiser CrateNewCrateRaiser);
-	 
+
 	abstract void handle(star.genetics.v2.yeast.events.NewMatingExperimentRaiser NewMatingExperimentRaiser);
-	 
+
 	abstract void handle(star.genetics.v2.yeast.events.NewReplicationExperimentRaiser NewReplicationExperimentRaiser);
-	 
+
 	public void removeNotify()
 	{
 		super.removeNotify();
-		getAdapter().removeHandled( star.genetics.v1.ui.events.CrateNewCrateEvent.class );
-		getAdapter().removeHandled( star.genetics.v2.yeast.events.NewReplicationExperimentEvent.class );
-		getAdapter().removeHandled( star.genetics.v2.yeast.events.NewMatingExperimentEvent.class );
+		getAdapter().removeHandled(star.genetics.v1.ui.events.CrateNewCrateEvent.class);
+		getAdapter().removeHandled(star.genetics.v2.yeast.events.NewReplicationExperimentEvent.class);
+		getAdapter().removeHandled(star.genetics.v2.yeast.events.NewMatingExperimentEvent.class);
 	}
-	 
+
 	abstract void updateLayout();
-	 
+
 	void updateLayout_SwingUtilitiesInvokeLater()
 	{
 		javax.swing.SwingUtilities.invokeLater(new java.lang.Runnable()
+		{
+			public void run()
 			{
-			public void run() {
 				updateLayout();
 			}
 		});
 	}
-	 
+
 }

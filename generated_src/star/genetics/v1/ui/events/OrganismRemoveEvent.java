@@ -6,19 +6,19 @@ public class OrganismRemoveEvent extends star.event.Event
 {
 	private static final long serialVersionUID = 1L;
 
-	public  OrganismRemoveEvent(star.event.Raiser raiser, boolean valid)
+	public OrganismRemoveEvent(star.event.Raiser raiser, boolean valid)
 	{
-		super( raiser , valid ) ;
+		super(raiser, valid);
 	}
-	 
-	public  OrganismRemoveEvent(star.genetics.v1.ui.events.OrganismRemoveEvent event)
+
+	public OrganismRemoveEvent(star.genetics.v1.ui.events.OrganismRemoveEvent event)
 	{
-		super( event ) ;
+		super(event);
 	}
-	 
-	public  OrganismRemoveEvent(star.genetics.v1.ui.events.OrganismRemoveRaiser raiser)
+
+	public OrganismRemoveEvent(star.genetics.v1.ui.events.OrganismRemoveRaiser raiser)
 	{
-		super( raiser ) ;
+		super(raiser);
 	}
-	 
+
 }

@@ -7,64 +7,67 @@ abstract class FlyUI_generated extends javax.swing.JPanel implements star.event.
 	private star.event.Adapter adapter;
 	private static final long serialVersionUID = 1L;
 
-	public  FlyUI_generated()
+	public FlyUI_generated()
 	{
 		super();
 	}
-	 
-	public  FlyUI_generated(boolean boolean0)
+
+	public FlyUI_generated(boolean boolean0)
 	{
 		super(boolean0);
 	}
-	 
-	public  FlyUI_generated(java.awt.LayoutManager layoutManager, boolean boolean0)
+
+	public FlyUI_generated(java.awt.LayoutManager layoutManager, boolean boolean0)
 	{
-		super(layoutManager,boolean0);
+		super(layoutManager, boolean0);
 	}
-	 
-	public  FlyUI_generated(java.awt.LayoutManager layoutManager)
+
+	public FlyUI_generated(java.awt.LayoutManager layoutManager)
 	{
 		super(layoutManager);
 	}
-	 
+
 	public void addNotify()
 	{
 		super.addNotify();
-		getAdapter().addHandled( star.genetics.v1.ui.events.CrateNewCrateEvent.class );
+		getAdapter().addHandled(star.genetics.v1.ui.events.CrateNewCrateEvent.class);
 	}
-	 
+
 	public void eventRaised(final star.event.Event event)
 	{
 		eventRaisedHandles(event);
 	}
-	 
+
 	private void eventRaisedHandles(final star.event.Event event)
 	{
-		if( event.getClass().getName().equals( "star.genetics.v1.ui.events.CrateNewCrateEvent" ) && event.isValid() ) 
+		if (event.getClass().getName().equals("star.genetics.v1.ui.events.CrateNewCrateEvent") && event.isValid())
 		{
-			 long start = System.nanoTime();
-			
-			handle( (star.genetics.v1.ui.events.CrateNewCrateRaiser)event.getSource());
-			 long end = System.nanoTime();
-			 if( end - start > 500000000 ) { System.out.println( this.getClass().getName() + ".handle "  + ( end-start )/1000000 ); } 
+			long start = System.nanoTime();
+
+			handle((star.genetics.v1.ui.events.CrateNewCrateRaiser) event.getSource());
+			long end = System.nanoTime();
+			if (end - start > 500000000)
+			{
+				System.out.println(this.getClass().getName() + ".handle " + (end - start) / 1000000);
+			}
 		}
 	}
-	 
+
 	public star.event.Adapter getAdapter()
 	{
-		if( adapter == null )
+		if (adapter == null)
 		{
 			adapter = new star.event.Adapter(this);
 		}
 		return adapter;
 	}
-	 
+
 	abstract void handle(star.genetics.v1.ui.events.CrateNewCrateRaiser CrateNewCrateRaiser);
-	 
+
 	public void removeNotify()
 	{
 		super.removeNotify();
-		getAdapter().removeHandled( star.genetics.v1.ui.events.CrateNewCrateEvent.class );
+		getAdapter().removeHandled(star.genetics.v1.ui.events.CrateNewCrateEvent.class);
 	}
-	 
+
 }

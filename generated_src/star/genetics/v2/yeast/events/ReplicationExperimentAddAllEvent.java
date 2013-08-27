@@ -6,19 +6,19 @@ public class ReplicationExperimentAddAllEvent extends star.event.Event
 {
 	private static final long serialVersionUID = 1L;
 
-	public  ReplicationExperimentAddAllEvent(star.event.Raiser raiser, boolean valid)
+	public ReplicationExperimentAddAllEvent(star.event.Raiser raiser, boolean valid)
 	{
-		super( raiser , valid ) ;
+		super(raiser, valid);
 	}
-	 
-	public  ReplicationExperimentAddAllEvent(star.genetics.v2.yeast.events.ReplicationExperimentAddAllEvent event)
+
+	public ReplicationExperimentAddAllEvent(star.genetics.v2.yeast.events.ReplicationExperimentAddAllEvent event)
 	{
-		super( event ) ;
+		super(event);
 	}
-	 
-	public  ReplicationExperimentAddAllEvent(star.genetics.v2.yeast.events.ReplicationExperimentAddAllRaiser raiser)
+
+	public ReplicationExperimentAddAllEvent(star.genetics.v2.yeast.events.ReplicationExperimentAddAllRaiser raiser)
 	{
-		super( raiser ) ;
+		super(raiser);
 	}
-	 
+
 }

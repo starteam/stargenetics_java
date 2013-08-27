@@ -7,76 +7,80 @@ abstract class GroupByGel_generated extends javax.swing.JPanel implements star.e
 	private star.event.Adapter adapter;
 	private static final long serialVersionUID = 1L;
 
-	public  GroupByGel_generated()
+	public GroupByGel_generated()
 	{
 		super();
 	}
-	 
-	public  GroupByGel_generated(boolean boolean0)
+
+	public GroupByGel_generated(boolean boolean0)
 	{
 		super(boolean0);
 	}
-	 
-	public  GroupByGel_generated(java.awt.LayoutManager layoutManager, boolean boolean0)
+
+	public GroupByGel_generated(java.awt.LayoutManager layoutManager, boolean boolean0)
 	{
-		super(layoutManager,boolean0);
+		super(layoutManager, boolean0);
 	}
-	 
-	public  GroupByGel_generated(java.awt.LayoutManager layoutManager)
+
+	public GroupByGel_generated(java.awt.LayoutManager layoutManager)
 	{
 		super(layoutManager);
 	}
-	 
+
 	public void addNotify()
 	{
 		super.addNotify();
-		getAdapter().addHandled( star.genetics.v1.ui.events.CrateProgeniesEvent.class );
+		getAdapter().addHandled(star.genetics.v1.ui.events.CrateProgeniesEvent.class);
 	}
-	 
+
 	public void eventRaised(final star.event.Event event)
 	{
 		eventRaisedHandles(event);
 	}
-	 
+
 	private void eventRaisedHandles(final star.event.Event event)
 	{
-		if( event.getClass().getName().equals( "star.genetics.v1.ui.events.CrateProgeniesEvent" ) && event.isValid() ) 
+		if (event.getClass().getName().equals("star.genetics.v1.ui.events.CrateProgeniesEvent") && event.isValid())
 		{
-			 long start = System.nanoTime();
-			
-			progeniesEvent( (star.genetics.v1.ui.events.CrateProgeniesRaiser)event.getSource());
-			 long end = System.nanoTime();
-			 if( end - start > 500000000 ) { System.out.println( this.getClass().getName() + ".progeniesEvent "  + ( end-start )/1000000 ); } 
+			long start = System.nanoTime();
+
+			progeniesEvent((star.genetics.v1.ui.events.CrateProgeniesRaiser) event.getSource());
+			long end = System.nanoTime();
+			if (end - start > 500000000)
+			{
+				System.out.println(this.getClass().getName() + ".progeniesEvent " + (end - start) / 1000000);
+			}
 		}
 	}
-	 
+
 	public star.event.Adapter getAdapter()
 	{
-		if( adapter == null )
+		if (adapter == null)
 		{
 			adapter = new star.event.Adapter(this);
 		}
 		return adapter;
 	}
-	 
+
 	abstract void progeniesEvent(star.genetics.v1.ui.events.CrateProgeniesRaiser CrateProgeniesRaiser);
-	 
+
 	public void removeNotify()
 	{
 		super.removeNotify();
-		getAdapter().removeHandled( star.genetics.v1.ui.events.CrateProgeniesEvent.class );
+		getAdapter().removeHandled(star.genetics.v1.ui.events.CrateProgeniesEvent.class);
 	}
-	 
+
 	abstract void updateTree();
-	 
+
 	void updateTree_SwingUtilitiesInvokeLater()
 	{
 		javax.swing.SwingUtilities.invokeLater(new java.lang.Runnable()
+		{
+			public void run()
 			{
-			public void run() {
 				updateTree();
 			}
 		});
 	}
-	 
+
 }

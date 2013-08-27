@@ -7,43 +7,43 @@ abstract class SGZBuilder_generated extends javax.swing.JPanel implements star.e
 	private star.event.Adapter adapter;
 	private static final long serialVersionUID = 1L;
 
-	public  SGZBuilder_generated()
+	public SGZBuilder_generated()
 	{
 		super();
 	}
-	 
-	public  SGZBuilder_generated(boolean boolean0)
+
+	public SGZBuilder_generated(boolean boolean0)
 	{
 		super(boolean0);
 	}
-	 
-	public  SGZBuilder_generated(java.awt.LayoutManager layoutManager, boolean boolean0)
+
+	public SGZBuilder_generated(java.awt.LayoutManager layoutManager, boolean boolean0)
 	{
-		super(layoutManager,boolean0);
+		super(layoutManager, boolean0);
 	}
-	 
-	public  SGZBuilder_generated(java.awt.LayoutManager layoutManager)
+
+	public SGZBuilder_generated(java.awt.LayoutManager layoutManager)
 	{
 		super(layoutManager);
 	}
-	 
+
 	public void addNotify()
 	{
 		super.addNotify();
 	}
-	 
+
 	public star.event.Adapter getAdapter()
 	{
-		if( adapter == null )
+		if (adapter == null)
 		{
 			adapter = new star.event.Adapter(this);
 		}
 		return adapter;
 	}
-	 
+
 	public void removeNotify()
 	{
 		super.removeNotify();
 	}
-	 
+
 }

@@ -8,43 +8,43 @@ abstract class Screenshot_generated extends star.genetics.v2.ui.menu.MenuItem im
 	private java.lang.Exception errorMessage;
 	private static final long serialVersionUID = 1L;
 
-	public  Screenshot_generated()
+	public Screenshot_generated()
 	{
 		super();
 	}
-	 
+
 	public void addNotify()
 	{
 		super.addNotify();
 	}
-	 
+
 	public star.event.Adapter getAdapter()
 	{
-		if( adapter == null )
+		if (adapter == null)
 		{
 			adapter = new star.event.Adapter(this);
 		}
 		return adapter;
 	}
-	 
+
 	public java.lang.Exception getErrorMessage()
 	{
-		return this.errorMessage ;
+		return this.errorMessage;
 	}
-	 
+
 	public void raise_ErrorDialogEvent()
 	{
 		(new star.genetics.events.ErrorDialogEvent(this)).raise();
 	}
-	 
+
 	public void removeNotify()
 	{
 		super.removeNotify();
 	}
-	 
+
 	protected void setErrorMessage(java.lang.Exception errorMessage)
 	{
-		this.errorMessage = errorMessage ;
+		this.errorMessage = errorMessage;
 	}
-	 
+
 }

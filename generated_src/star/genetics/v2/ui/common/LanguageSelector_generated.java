@@ -7,43 +7,43 @@ abstract class LanguageSelector_generated extends javax.swing.JMenu implements s
 	private star.event.Adapter adapter;
 	private static final long serialVersionUID = 1L;
 
-	public  LanguageSelector_generated()
+	public LanguageSelector_generated()
 	{
 		super();
 	}
-	 
-	public  LanguageSelector_generated(java.lang.String string, boolean boolean0)
+
+	public LanguageSelector_generated(java.lang.String string, boolean boolean0)
 	{
-		super(string,boolean0);
+		super(string, boolean0);
 	}
-	 
-	public  LanguageSelector_generated(java.lang.String string)
+
+	public LanguageSelector_generated(java.lang.String string)
 	{
 		super(string);
 	}
-	 
-	public  LanguageSelector_generated(javax.swing.Action action)
+
+	public LanguageSelector_generated(javax.swing.Action action)
 	{
 		super(action);
 	}
-	 
+
 	public void addNotify()
 	{
 		super.addNotify();
 	}
-	 
+
 	public star.event.Adapter getAdapter()
 	{
-		if( adapter == null )
+		if (adapter == null)
 		{
 			adapter = new star.event.Adapter(this);
 		}
 		return adapter;
 	}
-	 
+
 	public void removeNotify()
 	{
 		super.removeNotify();
 	}
-	 
+
 }

@@ -6,19 +6,19 @@ public class ProgenyAddProgenyEvent extends star.event.Event
 {
 	private static final long serialVersionUID = 1L;
 
-	public  ProgenyAddProgenyEvent(star.event.Raiser raiser, boolean valid)
+	public ProgenyAddProgenyEvent(star.event.Raiser raiser, boolean valid)
 	{
-		super( raiser , valid ) ;
+		super(raiser, valid);
 	}
-	 
-	public  ProgenyAddProgenyEvent(star.genetics.v1.ui.events.ProgenyAddProgenyEvent event)
+
+	public ProgenyAddProgenyEvent(star.genetics.v1.ui.events.ProgenyAddProgenyEvent event)
 	{
-		super( event ) ;
+		super(event);
 	}
-	 
-	public  ProgenyAddProgenyEvent(star.genetics.v1.ui.events.ProgenyAddProgenyRaiser raiser)
+
+	public ProgenyAddProgenyEvent(star.genetics.v1.ui.events.ProgenyAddProgenyRaiser raiser)
 	{
-		super( raiser ) ;
+		super(raiser);
 	}
-	 
+
 }

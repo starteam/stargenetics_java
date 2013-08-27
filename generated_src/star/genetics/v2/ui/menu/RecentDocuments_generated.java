@@ -8,58 +8,61 @@ abstract class RecentDocuments_generated extends javax.swing.JMenu implements st
 	private java.util.prefs.Preferences preferences;
 	private static final long serialVersionUID = 1L;
 
-	public  RecentDocuments_generated()
+	public RecentDocuments_generated()
 	{
 		super();
 	}
-	 
-	public  RecentDocuments_generated(java.lang.String string, boolean boolean0)
+
+	public RecentDocuments_generated(java.lang.String string, boolean boolean0)
 	{
-		super(string,boolean0);
+		super(string, boolean0);
 	}
-	 
-	public  RecentDocuments_generated(java.lang.String string)
+
+	public RecentDocuments_generated(java.lang.String string)
 	{
 		super(string);
 	}
-	 
-	public  RecentDocuments_generated(javax.swing.Action action)
+
+	public RecentDocuments_generated(javax.swing.Action action)
 	{
 		super(action);
 	}
-	 
+
 	public void addNotify()
 	{
 		super.addNotify();
-		getAdapter().addHandled( star.genetics.events.OpenModelEvent.class );
+		getAdapter().addHandled(star.genetics.events.OpenModelEvent.class);
 	}
-	 
+
 	public void eventRaised(final star.event.Event event)
 	{
 		eventRaisedHandles(event);
 	}
-	 
+
 	private void eventRaisedHandles(final star.event.Event event)
 	{
-		if( event.getClass().getName().equals( "star.genetics.events.OpenModelEvent" ) && event.isValid() ) 
+		if (event.getClass().getName().equals("star.genetics.events.OpenModelEvent") && event.isValid())
 		{
-			 long start = System.nanoTime();
-			
-			openFile( (star.genetics.events.OpenModelRaiser)event.getSource());
-			 long end = System.nanoTime();
-			 if( end - start > 500000000 ) { System.out.println( this.getClass().getName() + ".openFile "  + ( end-start )/1000000 ); } 
+			long start = System.nanoTime();
+
+			openFile((star.genetics.events.OpenModelRaiser) event.getSource());
+			long end = System.nanoTime();
+			if (end - start > 500000000)
+			{
+				System.out.println(this.getClass().getName() + ".openFile " + (end - start) / 1000000);
+			}
 		}
 	}
-	 
+
 	public star.event.Adapter getAdapter()
 	{
-		if( adapter == null )
+		if (adapter == null)
 		{
 			adapter = new star.event.Adapter(this);
 		}
 		return adapter;
 	}
-	 
+
 	java.util.prefs.Preferences getPreferences(java.lang.String name)
 	{
 		try
@@ -67,49 +70,49 @@ abstract class RecentDocuments_generated extends javax.swing.JMenu implements st
 			plugin.preferences.Preferences pref = (plugin.preferences.Preferences) plugin.Loader.getDefaultLoader().getPlugin(plugin.preferences.Preferences.class.getName(), plugin.preferences.PreferencesImplementation.class.getName());
 			this.preferences = pref.getPreferences(name);
 		}
-		catch( plugin.PluginException ex )
+		catch (plugin.PluginException ex)
 		{
 			ex.printStackTrace();
 		}
-		if( preferences == null )
+		if (preferences == null)
 		{
 			return java.util.prefs.Preferences.userRoot().node(name);
 		}
 		return preferences;
 	}
-	 
+
 	java.util.prefs.Preferences getPreferences()
 	{
-		if( preferences == null )
+		if (preferences == null)
 		{
 			try
 			{
 				plugin.preferences.Preferences pref = (plugin.preferences.Preferences) plugin.Loader.getDefaultLoader().getPlugin(plugin.preferences.Preferences.class.getName(), plugin.preferences.PreferencesImplementation.class.getName());
 				this.preferences = pref.getPreferences("star.genetics.v2.ui.menu.RecentDocuments");
 			}
-			catch( plugin.PluginException ex )
+			catch (plugin.PluginException ex)
 			{
 				ex.printStackTrace();
 			}
 		}
-		if( preferences == null )
+		if (preferences == null)
 		{
 			return java.util.prefs.Preferences.userRoot().node("star.genetics.v2.ui.menu.RecentDocuments");
 		}
 		return preferences;
 	}
-	 
+
 	abstract void openFile(star.genetics.events.OpenModelRaiser OpenModelRaiser);
-	 
+
 	public void raise_OpenModelEvent()
 	{
 		(new star.genetics.events.OpenModelEvent(this)).raise();
 	}
-	 
+
 	public void removeNotify()
 	{
 		super.removeNotify();
-		getAdapter().removeHandled( star.genetics.events.OpenModelEvent.class );
+		getAdapter().removeHandled(star.genetics.events.OpenModelEvent.class);
 	}
-	 
+
 }

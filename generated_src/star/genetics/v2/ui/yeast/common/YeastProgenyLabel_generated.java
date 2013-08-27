@@ -10,89 +10,92 @@ abstract class YeastProgenyLabel_generated extends javax.swing.JComponent implem
 	private java.lang.String property;
 	private static final long serialVersionUID = 1L;
 
-	public  YeastProgenyLabel_generated()
+	public YeastProgenyLabel_generated()
 	{
 		super();
 	}
-	 
+
 	public void addNotify()
 	{
 		super.addNotify();
-		getAdapter().addHandled( star.genetics.v1.ui.events.OrganismSelectedEvent.class );
+		getAdapter().addHandled(star.genetics.v1.ui.events.OrganismSelectedEvent.class);
 	}
-	 
+
 	public void eventRaised(final star.event.Event event)
 	{
 		eventRaisedHandles(event);
 	}
-	 
+
 	private void eventRaisedHandles(final star.event.Event event)
 	{
-		if( event.getClass().getName().equals( "star.genetics.v1.ui.events.OrganismSelectedEvent" ) && event.isValid() ) 
+		if (event.getClass().getName().equals("star.genetics.v1.ui.events.OrganismSelectedEvent") && event.isValid())
 		{
-			 long start = System.nanoTime();
-			
-			handle( (star.genetics.v1.ui.events.OrganismSelectedRaiser)event.getSource());
-			 long end = System.nanoTime();
-			 if( end - start > 500000000 ) { System.out.println( this.getClass().getName() + ".handle "  + ( end-start )/1000000 ); } 
+			long start = System.nanoTime();
+
+			handle((star.genetics.v1.ui.events.OrganismSelectedRaiser) event.getSource());
+			long end = System.nanoTime();
+			if (end - start > 500000000)
+			{
+				System.out.println(this.getClass().getName() + ".handle " + (end - start) / 1000000);
+			}
 		}
 	}
-	 
+
 	public star.event.Adapter getAdapter()
 	{
-		if( adapter == null )
+		if (adapter == null)
 		{
 			adapter = new star.event.Adapter(this);
 		}
 		return adapter;
 	}
-	 
+
 	public star.genetics.genetic.model.Creature getCreature()
 	{
-		return this.creature ;
+		return this.creature;
 	}
-	 
+
 	public star.genetics.genetic.model.Creature getLawn()
 	{
-		return this.lawn ;
+		return this.lawn;
 	}
-	 
+
 	protected java.lang.String getProperty()
 	{
-		return this.property ;
+		return this.property;
 	}
-	 
+
 	abstract void handle(star.genetics.v1.ui.events.OrganismSelectedRaiser OrganismSelectedRaiser);
-	 
+
 	public void raise_OrganismSelectedEvent()
 	{
 		(new star.genetics.v1.ui.events.OrganismSelectedEvent(this)).raise();
 	}
-	 
+
 	public void raise_ProgenySelectedEvent()
 	{
 		(new star.genetics.v1.ui.events.ProgenySelectedEvent(this)).raise();
 	}
-	 
+
 	public void removeNotify()
 	{
 		super.removeNotify();
-		getAdapter().removeHandled( star.genetics.v1.ui.events.OrganismSelectedEvent.class );
+		getAdapter().removeHandled(star.genetics.v1.ui.events.OrganismSelectedEvent.class);
 	}
-	 
+
 	protected void setCreature(star.genetics.genetic.model.Creature creature)
 	{
-		this.creature = creature ;
+		this.creature = creature;
 	}
-	 
+
 	protected void setLawn(star.genetics.genetic.model.Creature lawn)
 	{
-		this.lawn = lawn ;
+		this.lawn = lawn;
 	}
-	 
+
 	protected void setProperty(java.lang.String property)
 	{
-		this.property = property ;
+		this.property = property;
 	}
-	 
+
 }
