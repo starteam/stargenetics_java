@@ -1,10 +1,12 @@
 package star.genetics.v2.ui.fly.common;
 
+import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.SwingConstants;
+import javax.swing.SwingUtilities;
 
 import net.miginfocom.swing.MigLayout;
 import star.annotations.Handles;
@@ -198,11 +200,20 @@ public class Crate extends Crate_generated implements CrateInterface
 				}
 				UIHelpers.getFrame(this).repaint();
 			}
-			catch (MatingException ex)
+			catch (final MatingException ex)
 			{
 				errorMessage = new RuntimeException(ex.getLocalizedMessage(), ex);
 				// raise_ErrorDialogEvent();
-				JOptionPane.showMessageDialog(this, ex.getLocalizedMessage());
+				final JComponent self = this;
+				SwingUtilities.invokeLater(new Runnable()
+				{
+
+					@Override
+					public void run()
+					{
+						JOptionPane.showMessageDialog(self, ex.getLocalizedMessage());
+					}
+				});
 			}
 		}
 	}
