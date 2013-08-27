@@ -7,6 +7,9 @@ import java.net.URLEncoder;
 import java.nio.ByteOrder;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.zip.DataFormatException;
+import java.util.zip.GZIPInputStream;
+import java.util.zip.GZIPOutputStream;
 
 import org.eclipse.jetty.util.B64Code;
 import org.eclipse.jetty.util.ajax.JSON;
@@ -14,6 +17,8 @@ import org.eclipse.jetty.util.security.Credential.MD5;
 import org.eclipse.jetty.websocket.WebSocket;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import utils.FileUtils;
 
 public class StarXWebSocket implements WebSocket.OnTextMessage
 {
@@ -47,12 +52,19 @@ public class StarXWebSocket implements WebSocket.OnTextMessage
 
 	private void command_open(HashMap message) throws IOException
 	{
-		byte[] data = B64Code.decode(message.get("stream").toString());
-		System.out.println("Loaded:" + data.length + "\n" + MD5.digest(new String(data)));
-		starxcomponent.open_stream("http://starx.mit.edu/web_stream.sg1", message.get("title").toString(), new ByteArrayInputStream(data));
-		seed = ((HashMap) message.get("wrap")).get("seed").toString();
-		response_save();
-
+		try
+		{
+			byte[] cmp_data = B64Code.decode(message.get("stream").toString());
+			byte[] data = FileUtils.inflate(cmp_data);
+			System.out.println("Loaded:" + data.length + "\n" + MD5.digest(new String(data)));
+			starxcomponent.open_stream("http://starx.mit.edu/web_stream.sg1", message.get("title").toString(), new ByteArrayInputStream(data));
+			seed = ((HashMap) message.get("wrap")).get("seed").toString();
+			response_save();
+		}
+		catch (DataFormatException ex)
+		{
+			throw new IOException("Data exception", ex);
+		}
 	}
 
 	private void response_save() throws IOException
@@ -61,13 +73,14 @@ public class StarXWebSocket implements WebSocket.OnTextMessage
 		starxcomponent.save(bos);
 		bos.flush();
 		bos.close();
-		System.out.println("Saved:" + bos.toByteArray().length + "\t" + MD5.digest(new String(bos.toByteArray())));
-		HashMap<String, String> data = new HashMap<String, String>();
-		data.put("command", "save_response");
-		data.put("url", "http://starx.mit.edu/web_stream.sg1");
-		data.put("stream", new String(B64Code.encode(bos.toByteArray())));
-		data.put("seed", seed);
-		connection.sendMessage(JSON.toString(data));
+		byte[] data = FileUtils.deflate(bos.toByteArray());
+		System.out.println("Saved:" + data.length + "\t" + MD5.digest(new String(data)));
+		HashMap<String, String> message = new HashMap<String, String>();
+		message.put("command", "save_response");
+		message.put("url", "http://starx.mit.edu/web_stream.sg1");
+		message.put("stream", new String(B64Code.encode(data)));
+		message.put("seed", seed);
+		connection.sendMessage(JSON.toString(message));
 	}
 
 	private String wrap(HashMap<String, String> data, HashMap message)

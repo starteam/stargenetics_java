@@ -151,7 +151,7 @@ public class WebSocketComponent extends WebSocketComponent_generated implements 
 	}
 
 	@Override
-	public void save(ByteArrayOutputStream bos)
+	public void save(OutputStream bos)
 	{
 		save_stream = bos;
 		try
