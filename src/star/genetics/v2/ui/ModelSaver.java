@@ -65,7 +65,7 @@ public class ModelSaver extends ModelSaver_generated
 				Component parent = UIHelpers.getFrame(provider);
 				if (parent == null)
 				{
-					parent = UIHelpers.getComponent(provider); 
+					parent = UIHelpers.getComponent(provider);
 				}
 				overwrite = JOptionPane.showConfirmDialog(parent, MessageFormat.format(Messages.getString("ModelSaver.4"), f.getName()), Messages.getString("ModelSaver.5"), JOptionPane.OK_CANCEL_OPTION) == JOptionPane.OK_OPTION; //$NON-NLS-1$ //$NON-NLS-2$
 			}

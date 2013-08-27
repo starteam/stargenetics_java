@@ -21,7 +21,7 @@ public class About extends About_generated implements ActionListener
 	protected String getMenuName()
 	{
 		return Messages.getString("About.0"); //$NON-NLS-1$
-		
+
 	}
 
 	@Override

@@ -424,12 +424,12 @@ public class Load2
 	{
 		@SuppressWarnings("unchecked")
 		ModelPropertiesSheet modelSheet = (ModelPropertiesSheet) model.getModelMetadata().get(ModelPropertiesSheet.class);
-		if(modelSheet == null )
+		if (modelSheet == null)
 		{
 			modelSheet = new ModelPropertiesSheet();
 		}
 		model.getModelMetadata().put(ModelPropertiesSheet.class, modelSheet);
-		
+
 		Iterator<HSSFRow> rows = sheet.rowIterator();
 		while (rows.hasNext())
 		{
@@ -438,8 +438,8 @@ public class Load2
 			{
 				String key = String.valueOf(r.getCell(r.getFirstCellNum() + 0));
 				String value = String.valueOf(r.getCell((r.getFirstCellNum() + 1)));
-				modelSheet.put(key,value);
-				
+				modelSheet.put(key, value);
+
 				if (key.toLowerCase().startsWith(Properties.NAME.toString().toLowerCase()))
 				{
 					genome.setName(value);
@@ -507,7 +507,7 @@ public class Load2
 					metadata.set(Properties.IDENTICALTWINSFREQUENCY, value);
 					model.getModelMetadata().put(MatingEngineMetadata.class, metadata);
 				}
-								
+
 			}
 		}
 
