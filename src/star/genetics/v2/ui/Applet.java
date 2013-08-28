@@ -12,6 +12,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.Locale;
 
 import javax.swing.JApplet;
 import javax.swing.JButton;
@@ -173,6 +174,8 @@ public class Applet extends JApplet
 	public void init()
 	{
 		super.init();
+		Messages.updateBundle(Locale.getDefault());
+
 		setLayout(new BorderLayout());
 		JTabbedPane pane = new JTabbedPane();
 		add(BorderLayout.CENTER, pane);

@@ -15,6 +15,7 @@ import org.eclipse.jetty.util.B64Code;
 import org.eclipse.jetty.util.ajax.JSON;
 import org.eclipse.jetty.util.security.Credential.MD5;
 import org.eclipse.jetty.websocket.WebSocket;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -56,8 +57,8 @@ public class StarXWebSocket implements WebSocket.OnTextMessage
 		{
 			byte[] cmp_data = B64Code.decode(message.get("stream").toString());
 			byte[] data = FileUtils.inflate(cmp_data);
-			System.out.println("Loaded:" + data.length + "\n" + MD5.digest(new String(data)));
-			starxcomponent.open_stream("http://starx.mit.edu/web_stream.sg1", message.get("title").toString(), new ByteArrayInputStream(data));
+			System.out.println("Loaded:" + cmp_data.length + " " + data.length + "\n" + MD5.digest(new String(data)));
+			starxcomponent.open_stream("http://starx.mit.edu/web_stream.sg1", message.get("title").toString() + ".sg1", new ByteArrayInputStream(data));
 			seed = ((HashMap) message.get("wrap")).get("seed").toString();
 			response_save();
 		}
@@ -74,7 +75,7 @@ public class StarXWebSocket implements WebSocket.OnTextMessage
 		bos.flush();
 		bos.close();
 		byte[] data = FileUtils.deflate(bos.toByteArray());
-		System.out.println("Saved:" + data.length + "\t" + MD5.digest(new String(data)));
+		System.out.println("Saved:" + bos.toByteArray().length + " " + data.length + "\t" + MD5.digest(new String(data)));
 		HashMap<String, String> message = new HashMap<String, String>();
 		message.put("command", "save_response");
 		message.put("url", "http://starx.mit.edu/web_stream.sg1");
@@ -111,6 +112,10 @@ public class StarXWebSocket implements WebSocket.OnTextMessage
 				{
 					response_save();
 				}
+				if ("list_experiments".equals(command))
+				{
+					command_list_experiments();
+				}
 			}
 			else
 			{
@@ -120,6 +125,27 @@ public class StarXWebSocket implements WebSocket.OnTextMessage
 		}
 		catch (IOException e)
 		{
+			e.printStackTrace();
+		}
+	}
+
+	public void command_list_experiments() throws IOException
+	{
+		try
+		{
+			JSONObject ret = new JSONObject();
+			JSONArray list = starxcomponent.listExperiments(this);
+			if (list != null)
+			{
+				ret.put("command", "list_experiment_response");
+				ret.put("kind", "full");
+				ret.put("experiments", list);
+				connection.sendMessage(ret.toString());
+			}
+		}
+		catch (JSONException e)
+		{
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
