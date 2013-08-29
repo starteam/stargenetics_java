@@ -2,156 +2,140 @@
 
 package star.genetics.v1.ui.crate.progenies;
 
-abstract class ProgeniesList_generated extends javax.swing.JList implements
-        star.event.EventController,
-        star.event.Listener,
-        star.genetics.v1.ui.events.ConfigureOrganismRaiser,
-        star.genetics.v1.ui.events.ListItemSelectedRaiser,
-        star.genetics.v1.ui.events.OrganismSetAsParentRaiser,
-        star.genetics.v1.ui.events.ProgenyAddProgenyRaiser,
-        star.genetics.v1.ui.events.ProgenySelectedRaiser
+abstract class ProgeniesList_generated extends javax.swing.JList implements star.event.EventController, star.event.Listener, star.genetics.v1.ui.events.ConfigureOrganismRaiser, star.genetics.v1.ui.events.ListItemSelectedRaiser, star.genetics.v1.ui.events.OrganismSetAsParentRaiser, star.genetics.v1.ui.events.ProgenyAddProgenyRaiser, star.genetics.v1.ui.events.ProgenySelectedRaiser
 {
 	private star.event.Adapter adapter;
 	private star.genetics.v1.ui.model.CrateModel crateModel;
 	private star.genetics.v1.ui.model.ProgeniesListModel listModel;
 	private static final long serialVersionUID = 1L;
 
-	public ProgeniesList_generated()
+	public  ProgeniesList_generated()
 	{
 		super();
 	}
-
-	public ProgeniesList_generated(java.lang.Object[] object)
+	 
+	public  ProgeniesList_generated(java.lang.Object[] object)
 	{
 		super(object);
 	}
-
-	public ProgeniesList_generated(java.util.Vector<?> vector)
+	 
+	public  ProgeniesList_generated(java.util.Vector<?> vector)
 	{
 		super(vector);
 	}
-
-	public ProgeniesList_generated(javax.swing.ListModel listModel)
+	 
+	public  ProgeniesList_generated(javax.swing.ListModel listModel)
 	{
 		super(listModel);
 	}
-
+	 
 	public void addNotify()
 	{
 		super.addNotify();
-		getAdapter().addHandled(star.genetics.v2.yeast.events.CreaturePropertiesChangedEvent.class);
-		getAdapter().addHandled(star.genetics.v1.ui.events.NextFrameEvent.class);
-		getAdapter().addHandled(star.genetics.v1.ui.events.CrateProgeniesEvent.class);
+		getAdapter().addHandled( star.genetics.v2.yeast.events.CreaturePropertiesChangedEvent.class );
+		getAdapter().addHandled( star.genetics.v1.ui.events.NextFrameEvent.class );
+		getAdapter().addHandled( star.genetics.v1.ui.events.CrateProgeniesEvent.class );
 	}
-
+	 
 	public void eventRaised(final star.event.Event event)
 	{
 		eventRaisedHandles(event);
 	}
-
+	 
 	private void eventRaisedHandles(final star.event.Event event)
 	{
-		if (event.getClass().getName().equals("star.genetics.v2.yeast.events.CreaturePropertiesChangedEvent") && event.isValid())
+		if( event.getClass().getName().equals( "star.genetics.v2.yeast.events.CreaturePropertiesChangedEvent" ) && event.isValid() ) 
 		{
-			long start = System.nanoTime();
-
-			handleCreatureChange((star.genetics.v2.yeast.events.CreaturePropertiesChangedRaiser) event.getSource());
-			long end = System.nanoTime();
-			if (end - start > 500000000)
-			{
-				System.out.println(this.getClass().getName() + ".handleCreatureChange " + (end - start) / 1000000);
-			}
+			 long start = System.nanoTime();
+			
+			handleCreatureChange( (star.genetics.v2.yeast.events.CreaturePropertiesChangedRaiser)event.getSource());
+			 long end = System.nanoTime();
+			 if( end - start > 500000000 ) { System.out.println( this.getClass().getName() + ".handleCreatureChange "  + ( end-start )/1000000 ); } 
 		}
-		if (event.getClass().getName().equals("star.genetics.v1.ui.events.NextFrameEvent") && event.isValid())
+		if( event.getClass().getName().equals( "star.genetics.v1.ui.events.NextFrameEvent" ) && event.isValid() ) 
 		{
-			long start = System.nanoTime();
-
-			nextFrame((star.genetics.v1.ui.events.NextFrameRaiser) event.getSource());
-			long end = System.nanoTime();
-			if (end - start > 500000000)
-			{
-				System.out.println(this.getClass().getName() + ".nextFrame " + (end - start) / 1000000);
-			}
+			 long start = System.nanoTime();
+			
+			nextFrame( (star.genetics.v1.ui.events.NextFrameRaiser)event.getSource());
+			 long end = System.nanoTime();
+			 if( end - start > 500000000 ) { System.out.println( this.getClass().getName() + ".nextFrame "  + ( end-start )/1000000 ); } 
 		}
-		if (event.getClass().getName().equals("star.genetics.v1.ui.events.CrateProgeniesEvent") && event.isValid())
+		if( event.getClass().getName().equals( "star.genetics.v1.ui.events.CrateProgeniesEvent" ) && event.isValid() ) 
 		{
-			long start = System.nanoTime();
-
-			progeniesEvent((star.genetics.v1.ui.events.CrateProgeniesRaiser) event.getSource());
-			long end = System.nanoTime();
-			if (end - start > 500000000)
-			{
-				System.out.println(this.getClass().getName() + ".progeniesEvent " + (end - start) / 1000000);
-			}
+			 long start = System.nanoTime();
+			
+			progeniesEvent( (star.genetics.v1.ui.events.CrateProgeniesRaiser)event.getSource());
+			 long end = System.nanoTime();
+			 if( end - start > 500000000 ) { System.out.println( this.getClass().getName() + ".progeniesEvent "  + ( end-start )/1000000 ); } 
 		}
 	}
-
+	 
 	public star.event.Adapter getAdapter()
 	{
-		if (adapter == null)
+		if( adapter == null )
 		{
 			adapter = new star.event.Adapter(this);
 		}
 		return adapter;
 	}
-
+	 
 	protected star.genetics.v1.ui.model.CrateModel getCrateModel()
 	{
-		return this.crateModel;
+		return this.crateModel ;
 	}
-
+	 
 	protected star.genetics.v1.ui.model.ProgeniesListModel getListModel()
 	{
-		return this.listModel;
+		return this.listModel ;
 	}
-
+	 
 	abstract void handleCreatureChange(star.genetics.v2.yeast.events.CreaturePropertiesChangedRaiser CreaturePropertiesChangedRaiser);
-
+	 
 	abstract void nextFrame(star.genetics.v1.ui.events.NextFrameRaiser NextFrameRaiser);
-
+	 
 	abstract void progeniesEvent(star.genetics.v1.ui.events.CrateProgeniesRaiser CrateProgeniesRaiser);
-
+	 
 	public void raise_ConfigureOrganismEvent()
 	{
 		(new star.genetics.v1.ui.events.ConfigureOrganismEvent(this)).raise();
 	}
-
+	 
 	public void raise_ListItemSelectedEvent()
 	{
 		(new star.genetics.v1.ui.events.ListItemSelectedEvent(this)).raise();
 	}
-
+	 
 	public void raise_OrganismSetAsParentEvent()
 	{
 		(new star.genetics.v1.ui.events.OrganismSetAsParentEvent(this)).raise();
 	}
-
+	 
 	public void raise_ProgenyAddProgenyEvent()
 	{
 		(new star.genetics.v1.ui.events.ProgenyAddProgenyEvent(this)).raise();
 	}
-
+	 
 	public void raise_ProgenySelectedEvent()
 	{
 		(new star.genetics.v1.ui.events.ProgenySelectedEvent(this)).raise();
 	}
-
+	 
 	public void removeNotify()
 	{
 		super.removeNotify();
-		getAdapter().removeHandled(star.genetics.v2.yeast.events.CreaturePropertiesChangedEvent.class);
-		getAdapter().removeHandled(star.genetics.v1.ui.events.NextFrameEvent.class);
-		getAdapter().removeHandled(star.genetics.v1.ui.events.CrateProgeniesEvent.class);
+		getAdapter().removeHandled( star.genetics.v2.yeast.events.CreaturePropertiesChangedEvent.class );
+		getAdapter().removeHandled( star.genetics.v1.ui.events.NextFrameEvent.class );
+		getAdapter().removeHandled( star.genetics.v1.ui.events.CrateProgeniesEvent.class );
 	}
-
+	 
 	protected void setCrateModel(star.genetics.v1.ui.model.CrateModel crateModel)
 	{
-		this.crateModel = crateModel;
+		this.crateModel = crateModel ;
 	}
-
+	 
 	protected void setListModel(star.genetics.v1.ui.model.ProgeniesListModel listModel)
 	{
-		this.listModel = listModel;
+		this.listModel = listModel ;
 	}
-
+	 
 }

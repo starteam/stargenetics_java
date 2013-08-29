@@ -7,33 +7,33 @@ abstract class ReplicaExperimentAddAll_generated extends star.genetics.v2.ui.com
 	private star.event.Adapter adapter;
 	private static final long serialVersionUID = 1L;
 
-	public ReplicaExperimentAddAll_generated()
+	public  ReplicaExperimentAddAll_generated()
 	{
 		super();
 	}
-
+	 
 	public void addNotify()
 	{
 		super.addNotify();
 	}
-
+	 
 	public star.event.Adapter getAdapter()
 	{
-		if (adapter == null)
+		if( adapter == null )
 		{
 			adapter = new star.event.Adapter(this);
 		}
 		return adapter;
 	}
-
+	 
 	public void raise_ReplicationExperimentAddAllEvent()
 	{
 		(new star.genetics.v2.yeast.events.ReplicationExperimentAddAllEvent(this)).raise();
 	}
-
+	 
 	public void removeNotify()
 	{
 		super.removeNotify();
 	}
-
+	 
 }

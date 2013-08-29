@@ -9,66 +9,63 @@ abstract class MainPanel_generated extends javax.swing.JPanel implements star.ev
 	private java.util.prefs.Preferences preferences;
 	private static final long serialVersionUID = 1L;
 
-	public MainPanel_generated()
+	public  MainPanel_generated()
 	{
 		super();
 	}
-
-	public MainPanel_generated(boolean boolean0)
+	 
+	public  MainPanel_generated(boolean boolean0)
 	{
 		super(boolean0);
 	}
-
-	public MainPanel_generated(java.awt.LayoutManager layoutManager, boolean boolean0)
+	 
+	public  MainPanel_generated(java.awt.LayoutManager layoutManager, boolean boolean0)
 	{
-		super(layoutManager, boolean0);
+		super(layoutManager,boolean0);
 	}
-
-	public MainPanel_generated(java.awt.LayoutManager layoutManager)
+	 
+	public  MainPanel_generated(java.awt.LayoutManager layoutManager)
 	{
 		super(layoutManager);
 	}
-
+	 
 	public void addNotify()
 	{
 		super.addNotify();
-		getAdapter().addHandled(star.genetics.events.LoadModelEvent.class);
+		getAdapter().addHandled( star.genetics.events.LoadModelEvent.class );
 	}
-
+	 
 	public void eventRaised(final star.event.Event event)
 	{
 		eventRaisedHandles(event);
 	}
-
+	 
 	private void eventRaisedHandles(final star.event.Event event)
 	{
-		if (event.getClass().getName().equals("star.genetics.events.LoadModelEvent") && event.isValid())
+		if( event.getClass().getName().equals( "star.genetics.events.LoadModelEvent" ) && event.isValid() ) 
 		{
-			long start = System.nanoTime();
-
-			loadModel((star.genetics.events.LoadModelRaiser) event.getSource());
-			long end = System.nanoTime();
-			if (end - start > 500000000)
-			{
-				System.out.println(this.getClass().getName() + ".loadModel " + (end - start) / 1000000);
-			}
+			 long start = System.nanoTime();
+			
+			loadModel( (star.genetics.events.LoadModelRaiser)event.getSource());
+			 long end = System.nanoTime();
+			 if( end - start > 500000000 ) { System.out.println( this.getClass().getName() + ".loadModel "  + ( end-start )/1000000 ); } 
 		}
 	}
-
+	 
 	public star.event.Adapter getAdapter()
 	{
-		if (adapter == null)
+		if( adapter == null )
 		{
 			adapter = new star.event.Adapter(this);
 		}
 		return adapter;
 	}
-
+	 
 	public java.lang.Exception getErrorMessage()
 	{
-		return this.errorMessage;
+		return this.errorMessage ;
 	}
-
+	 
 	java.util.prefs.Preferences getPreferences(java.lang.String name)
 	{
 		try
@@ -76,54 +73,54 @@ abstract class MainPanel_generated extends javax.swing.JPanel implements star.ev
 			plugin.preferences.Preferences pref = (plugin.preferences.Preferences) plugin.Loader.getDefaultLoader().getPlugin(plugin.preferences.Preferences.class.getName(), plugin.preferences.PreferencesImplementation.class.getName());
 			this.preferences = pref.getPreferences(name);
 		}
-		catch (plugin.PluginException ex)
+		catch( plugin.PluginException ex )
 		{
 			ex.printStackTrace();
 		}
-		if (preferences == null)
+		if( preferences == null )
 		{
 			return java.util.prefs.Preferences.userRoot().node(name);
 		}
 		return preferences;
 	}
-
+	 
 	java.util.prefs.Preferences getPreferences()
 	{
-		if (preferences == null)
+		if( preferences == null )
 		{
 			try
 			{
 				plugin.preferences.Preferences pref = (plugin.preferences.Preferences) plugin.Loader.getDefaultLoader().getPlugin(plugin.preferences.Preferences.class.getName(), plugin.preferences.PreferencesImplementation.class.getName());
 				this.preferences = pref.getPreferences("star.genetics.v2.ui.MainPanel");
 			}
-			catch (plugin.PluginException ex)
+			catch( plugin.PluginException ex )
 			{
 				ex.printStackTrace();
 			}
 		}
-		if (preferences == null)
+		if( preferences == null )
 		{
 			return java.util.prefs.Preferences.userRoot().node("star.genetics.v2.ui.MainPanel");
 		}
 		return preferences;
 	}
-
+	 
 	abstract void loadModel(star.genetics.events.LoadModelRaiser LoadModelRaiser);
-
+	 
 	public void raise_ErrorDialogEvent()
 	{
 		(new star.genetics.events.ErrorDialogEvent(this)).raise();
 	}
-
+	 
 	public void removeNotify()
 	{
 		super.removeNotify();
-		getAdapter().removeHandled(star.genetics.events.LoadModelEvent.class);
+		getAdapter().removeHandled( star.genetics.events.LoadModelEvent.class );
 	}
-
+	 
 	protected void setErrorMessage(java.lang.Exception errorMessage)
 	{
-		this.errorMessage = errorMessage;
+		this.errorMessage = errorMessage ;
 	}
-
+	 
 }

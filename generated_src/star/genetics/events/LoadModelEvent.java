@@ -6,19 +6,19 @@ public class LoadModelEvent extends star.event.Event
 {
 	private static final long serialVersionUID = 1L;
 
-	public LoadModelEvent(star.event.Raiser raiser, boolean valid)
+	public  LoadModelEvent(star.event.Raiser raiser, boolean valid)
 	{
-		super(raiser, valid);
+		super( raiser , valid ) ;
 	}
-
-	public LoadModelEvent(star.genetics.events.LoadModelEvent event)
+	 
+	public  LoadModelEvent(star.genetics.events.LoadModelEvent event)
 	{
-		super(event);
+		super( event ) ;
 	}
-
-	public LoadModelEvent(star.genetics.events.LoadModelRaiser raiser)
+	 
+	public  LoadModelEvent(star.genetics.events.LoadModelRaiser raiser)
 	{
-		super(raiser);
+		super( raiser ) ;
 	}
-
+	 
 }

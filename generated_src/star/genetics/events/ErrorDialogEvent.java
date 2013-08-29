@@ -6,19 +6,19 @@ public class ErrorDialogEvent extends star.event.Event
 {
 	private static final long serialVersionUID = 1L;
 
-	public ErrorDialogEvent(star.event.Raiser raiser, boolean valid)
+	public  ErrorDialogEvent(star.event.Raiser raiser, boolean valid)
 	{
-		super(raiser, valid);
+		super( raiser , valid ) ;
 	}
-
-	public ErrorDialogEvent(star.genetics.events.ErrorDialogEvent event)
+	 
+	public  ErrorDialogEvent(star.genetics.events.ErrorDialogEvent event)
 	{
-		super(event);
+		super( event ) ;
 	}
-
-	public ErrorDialogEvent(star.genetics.events.ErrorDialogRaiser raiser)
+	 
+	public  ErrorDialogEvent(star.genetics.events.ErrorDialogRaiser raiser)
 	{
-		super(raiser);
+		super( raiser ) ;
 	}
-
+	 
 }

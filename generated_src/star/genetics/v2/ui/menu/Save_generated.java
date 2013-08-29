@@ -10,68 +10,68 @@ abstract class Save_generated extends star.genetics.v2.ui.menu.MenuItem implemen
 	private java.io.OutputStream saveModelStream;
 	private static final long serialVersionUID = 1L;
 
-	public Save_generated()
+	public  Save_generated()
 	{
 		super();
 	}
-
+	 
 	public void addNotify()
 	{
 		super.addNotify();
 	}
-
+	 
 	public star.event.Adapter getAdapter()
 	{
-		if (adapter == null)
+		if( adapter == null )
 		{
 			adapter = new star.event.Adapter(this);
 		}
 		return adapter;
 	}
-
+	 
 	public java.lang.Exception getErrorMessage()
 	{
-		return this.errorMessage;
+		return this.errorMessage ;
 	}
-
+	 
 	public java.lang.String getModelFileName()
 	{
-		return this.modelFileName;
+		return this.modelFileName ;
 	}
-
+	 
 	public java.io.OutputStream getSaveModelStream()
 	{
-		return this.saveModelStream;
+		return this.saveModelStream ;
 	}
-
+	 
 	public void raise_ErrorDialogEvent()
 	{
 		(new star.genetics.events.ErrorDialogEvent(this)).raise();
 	}
-
+	 
 	public void raise_SaveModelEvent()
 	{
 		(new star.genetics.events.SaveModelEvent(this)).raise();
 	}
-
+	 
 	public void removeNotify()
 	{
 		super.removeNotify();
 	}
-
+	 
 	protected void setErrorMessage(java.lang.Exception errorMessage)
 	{
-		this.errorMessage = errorMessage;
+		this.errorMessage = errorMessage ;
 	}
-
+	 
 	protected void setModelFileName(java.lang.String modelFileName)
 	{
-		this.modelFileName = modelFileName;
+		this.modelFileName = modelFileName ;
 	}
-
+	 
 	protected void setSaveModelStream(java.io.OutputStream saveModelStream)
 	{
-		this.saveModelStream = saveModelStream;
+		this.saveModelStream = saveModelStream ;
 	}
-
+	 
 }

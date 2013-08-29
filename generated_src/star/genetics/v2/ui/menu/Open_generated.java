@@ -10,73 +10,73 @@ abstract class Open_generated extends star.genetics.v2.ui.menu.MenuItem implemen
 	private java.lang.String modelFileName;
 	private static final long serialVersionUID = 1L;
 
-	public Open_generated()
+	public  Open_generated()
 	{
 		super();
 	}
-
+	 
 	public void addNotify()
 	{
 		super.addNotify();
 	}
-
+	 
 	public star.event.Adapter getAdapter()
 	{
-		if (adapter == null)
+		if( adapter == null )
 		{
 			adapter = new star.event.Adapter(this);
 		}
 		return adapter;
 	}
-
+	 
 	public java.lang.Exception getErrorMessage()
 	{
-		return this.errorMessage;
+		return this.errorMessage ;
 	}
-
+	 
 	protected byte getModelBytes(int i)
 	{
-		return this.modelBytes[i];
+		return this.modelBytes[i] ;
 	}
-
+	 
 	protected byte[] getModelBytes()
 	{
-		return this.modelBytes;
+		return this.modelBytes ;
 	}
-
+	 
 	public java.lang.String getModelFileName()
 	{
-		return this.modelFileName;
+		return this.modelFileName ;
 	}
-
+	 
 	public void raise_ErrorDialogEvent()
 	{
 		(new star.genetics.events.ErrorDialogEvent(this)).raise();
 	}
-
+	 
 	public void raise_OpenModelEvent()
 	{
 		(new star.genetics.events.OpenModelEvent(this)).raise();
 	}
-
+	 
 	public void removeNotify()
 	{
 		super.removeNotify();
 	}
-
+	 
 	protected void setErrorMessage(java.lang.Exception errorMessage)
 	{
-		this.errorMessage = errorMessage;
+		this.errorMessage = errorMessage ;
 	}
-
+	 
 	protected void setModelBytes(byte[] modelBytes)
 	{
-		this.modelBytes = modelBytes;
+		this.modelBytes = modelBytes ;
 	}
-
+	 
 	protected void setModelFileName(java.lang.String modelFileName)
 	{
-		this.modelFileName = modelFileName;
+		this.modelFileName = modelFileName ;
 	}
-
+	 
 }

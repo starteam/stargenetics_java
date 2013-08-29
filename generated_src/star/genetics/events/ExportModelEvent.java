@@ -6,19 +6,19 @@ public class ExportModelEvent extends star.event.Event
 {
 	private static final long serialVersionUID = 1L;
 
-	public ExportModelEvent(star.event.Raiser raiser, boolean valid)
+	public  ExportModelEvent(star.event.Raiser raiser, boolean valid)
 	{
-		super(raiser, valid);
+		super( raiser , valid ) ;
 	}
-
-	public ExportModelEvent(star.genetics.events.ExportModelEvent event)
+	 
+	public  ExportModelEvent(star.genetics.events.ExportModelEvent event)
 	{
-		super(event);
+		super( event ) ;
 	}
-
-	public ExportModelEvent(star.genetics.events.ExportModelRaiser raiser)
+	 
+	public  ExportModelEvent(star.genetics.events.ExportModelRaiser raiser)
 	{
-		super(raiser);
+		super( raiser ) ;
 	}
-
+	 
 }

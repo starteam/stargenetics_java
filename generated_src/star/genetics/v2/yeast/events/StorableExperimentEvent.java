@@ -6,19 +6,19 @@ public class StorableExperimentEvent extends star.event.Event
 {
 	private static final long serialVersionUID = 1L;
 
-	public StorableExperimentEvent(star.event.Raiser raiser, boolean valid)
+	public  StorableExperimentEvent(star.event.Raiser raiser, boolean valid)
 	{
-		super(raiser, valid);
+		super( raiser , valid ) ;
 	}
-
-	public StorableExperimentEvent(star.genetics.v2.yeast.events.StorableExperimentEvent event)
+	 
+	public  StorableExperimentEvent(star.genetics.v2.yeast.events.StorableExperimentEvent event)
 	{
-		super(event);
+		super( event ) ;
 	}
-
-	public StorableExperimentEvent(star.genetics.v2.yeast.events.StorableExperimentRaiser raiser)
+	 
+	public  StorableExperimentEvent(star.genetics.v2.yeast.events.StorableExperimentRaiser raiser)
 	{
-		super(raiser);
+		super( raiser ) ;
 	}
-
+	 
 }

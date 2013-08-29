@@ -6,19 +6,19 @@ public class NewMatingExperimentEvent extends star.event.Event
 {
 	private static final long serialVersionUID = 1L;
 
-	public NewMatingExperimentEvent(star.event.Raiser raiser, boolean valid)
+	public  NewMatingExperimentEvent(star.event.Raiser raiser, boolean valid)
 	{
-		super(raiser, valid);
+		super( raiser , valid ) ;
 	}
-
-	public NewMatingExperimentEvent(star.genetics.v2.yeast.events.NewMatingExperimentEvent event)
+	 
+	public  NewMatingExperimentEvent(star.genetics.v2.yeast.events.NewMatingExperimentEvent event)
 	{
-		super(event);
+		super( event ) ;
 	}
-
-	public NewMatingExperimentEvent(star.genetics.v2.yeast.events.NewMatingExperimentRaiser raiser)
+	 
+	public  NewMatingExperimentEvent(star.genetics.v2.yeast.events.NewMatingExperimentRaiser raiser)
 	{
-		super(raiser);
+		super( raiser ) ;
 	}
-
+	 
 }

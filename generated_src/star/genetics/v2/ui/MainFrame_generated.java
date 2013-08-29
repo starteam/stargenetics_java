@@ -8,40 +8,40 @@ abstract class MainFrame_generated extends javax.swing.JFrame implements star.ev
 	private java.util.prefs.Preferences preferences = loadPreferences();
 	private static final long serialVersionUID = 1L;
 
-	public MainFrame_generated() throws java.awt.HeadlessException
+	public  MainFrame_generated() throws java.awt.HeadlessException
 	{
 		super();
 	}
-
-	public MainFrame_generated(java.awt.GraphicsConfiguration graphicsConfiguration)
+	 
+	public  MainFrame_generated(java.awt.GraphicsConfiguration graphicsConfiguration)
 	{
 		super(graphicsConfiguration);
 	}
-
-	public MainFrame_generated(java.lang.String string, java.awt.GraphicsConfiguration graphicsConfiguration)
+	 
+	public  MainFrame_generated(java.lang.String string, java.awt.GraphicsConfiguration graphicsConfiguration)
 	{
-		super(string, graphicsConfiguration);
+		super(string,graphicsConfiguration);
 	}
-
-	public MainFrame_generated(java.lang.String string) throws java.awt.HeadlessException
+	 
+	public  MainFrame_generated(java.lang.String string) throws java.awt.HeadlessException
 	{
 		super(string);
 	}
-
+	 
 	public void addNotify()
 	{
 		super.addNotify();
 	}
-
+	 
 	public star.event.Adapter getAdapter()
 	{
-		if (adapter == null)
+		if( adapter == null )
 		{
 			adapter = new star.event.Adapter(this);
 		}
 		return adapter;
 	}
-
+	 
 	java.util.prefs.Preferences getPreferences(java.lang.String name)
 	{
 		try
@@ -49,38 +49,38 @@ abstract class MainFrame_generated extends javax.swing.JFrame implements star.ev
 			plugin.preferences.Preferences pref = (plugin.preferences.Preferences) plugin.Loader.getDefaultLoader().getPlugin(plugin.preferences.Preferences.class.getName(), plugin.preferences.PreferencesImplementation.class.getName());
 			this.preferences = pref.getPreferences(name);
 		}
-		catch (plugin.PluginException ex)
+		catch( plugin.PluginException ex )
 		{
 			ex.printStackTrace();
 		}
-		if (preferences == null)
+		if( preferences == null )
 		{
 			return java.util.prefs.Preferences.userRoot().node(name);
 		}
 		return preferences;
 	}
-
+	 
 	java.util.prefs.Preferences getPreferences()
 	{
-		if (preferences == null)
+		if( preferences == null )
 		{
 			try
 			{
 				plugin.preferences.Preferences pref = (plugin.preferences.Preferences) plugin.Loader.getDefaultLoader().getPlugin(plugin.preferences.Preferences.class.getName(), plugin.preferences.PreferencesImplementation.class.getName());
 				this.preferences = pref.getPreferences("star.genetics.v2.ui.MainFrame");
 			}
-			catch (plugin.PluginException ex)
+			catch( plugin.PluginException ex )
 			{
 				ex.printStackTrace();
 			}
 		}
-		if (preferences == null)
+		if( preferences == null )
 		{
 			return java.util.prefs.Preferences.userRoot().node("star.genetics.v2.ui.MainFrame");
 		}
 		return preferences;
 	}
-
+	 
 	java.util.prefs.Preferences loadPreferences()
 	{
 		try
@@ -88,18 +88,17 @@ abstract class MainFrame_generated extends javax.swing.JFrame implements star.ev
 			plugin.preferences.Preferences pref = (plugin.preferences.Preferences) plugin.Loader.getDefaultLoader().getPlugin(plugin.preferences.Preferences.class.getName(), plugin.preferences.PreferencesImplementation.class.getName());
 			java.util.Properties prop = new java.util.Properties();
 			prop.load(this.getClass().getClassLoader().getResourceAsStream("resources/default.properties"));
-			pref.setApplication("StarGenetics", prop);
-		}
-		catch (Throwable ex)
+			pref.setApplication("StarGenetics",prop);}
+		catch( Throwable ex )
 		{
 			ex.printStackTrace();
 		}
 		return getPreferences();
 	}
-
+	 
 	public void removeNotify()
 	{
 		super.removeNotify();
 	}
-
+	 
 }

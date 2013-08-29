@@ -10,68 +10,68 @@ abstract class Export_generated extends star.genetics.v2.ui.menu.MenuItem implem
 	private java.io.OutputStream modelStream;
 	private static final long serialVersionUID = 1L;
 
-	public Export_generated()
+	public  Export_generated()
 	{
 		super();
 	}
-
+	 
 	public void addNotify()
 	{
 		super.addNotify();
 	}
-
+	 
 	public star.event.Adapter getAdapter()
 	{
-		if (adapter == null)
+		if( adapter == null )
 		{
 			adapter = new star.event.Adapter(this);
 		}
 		return adapter;
 	}
-
+	 
 	public java.lang.Exception getErrorMessage()
 	{
-		return this.errorMessage;
+		return this.errorMessage ;
 	}
-
+	 
 	public java.lang.String getModelFileName()
 	{
-		return this.modelFileName;
+		return this.modelFileName ;
 	}
-
+	 
 	public java.io.OutputStream getModelStream()
 	{
-		return this.modelStream;
+		return this.modelStream ;
 	}
-
+	 
 	public void raise_ErrorDialogEvent()
 	{
 		(new star.genetics.events.ErrorDialogEvent(this)).raise();
 	}
-
+	 
 	public void raise_ExportModelEvent()
 	{
 		(new star.genetics.events.ExportModelEvent(this)).raise();
 	}
-
+	 
 	public void removeNotify()
 	{
 		super.removeNotify();
 	}
-
+	 
 	protected void setErrorMessage(java.lang.Exception errorMessage)
 	{
-		this.errorMessage = errorMessage;
+		this.errorMessage = errorMessage ;
 	}
-
+	 
 	protected void setModelFileName(java.lang.String modelFileName)
 	{
-		this.modelFileName = modelFileName;
+		this.modelFileName = modelFileName ;
 	}
-
+	 
 	protected void setModelStream(java.io.OutputStream modelStream)
 	{
-		this.modelStream = modelStream;
+		this.modelStream = modelStream ;
 	}
-
+	 
 }

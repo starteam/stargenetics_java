@@ -6,19 +6,19 @@ public class ProgenySelectedEvent extends star.event.Event
 {
 	private static final long serialVersionUID = 1L;
 
-	public ProgenySelectedEvent(star.event.Raiser raiser, boolean valid)
+	public  ProgenySelectedEvent(star.event.Raiser raiser, boolean valid)
 	{
-		super(raiser, valid);
+		super( raiser , valid ) ;
 	}
-
-	public ProgenySelectedEvent(star.genetics.v1.ui.events.ProgenySelectedEvent event)
+	 
+	public  ProgenySelectedEvent(star.genetics.v1.ui.events.ProgenySelectedEvent event)
 	{
-		super(event);
+		super( event ) ;
 	}
-
-	public ProgenySelectedEvent(star.genetics.v1.ui.events.ProgenySelectedRaiser raiser)
+	 
+	public  ProgenySelectedEvent(star.genetics.v1.ui.events.ProgenySelectedRaiser raiser)
 	{
-		super(raiser);
+		super( raiser ) ;
 	}
-
+	 
 }

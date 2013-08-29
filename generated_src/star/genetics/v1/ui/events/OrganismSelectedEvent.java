@@ -6,19 +6,19 @@ public class OrganismSelectedEvent extends star.event.Event
 {
 	private static final long serialVersionUID = 1L;
 
-	public OrganismSelectedEvent(star.event.Raiser raiser, boolean valid)
+	public  OrganismSelectedEvent(star.event.Raiser raiser, boolean valid)
 	{
-		super(raiser, valid);
+		super( raiser , valid ) ;
 	}
-
-	public OrganismSelectedEvent(star.genetics.v1.ui.events.OrganismSelectedEvent event)
+	 
+	public  OrganismSelectedEvent(star.genetics.v1.ui.events.OrganismSelectedEvent event)
 	{
-		super(event);
+		super( event ) ;
 	}
-
-	public OrganismSelectedEvent(star.genetics.v1.ui.events.OrganismSelectedRaiser raiser)
+	 
+	public  OrganismSelectedEvent(star.genetics.v1.ui.events.OrganismSelectedRaiser raiser)
 	{
-		super(raiser);
+		super( raiser ) ;
 	}
-
+	 
 }

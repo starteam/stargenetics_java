@@ -8,70 +8,67 @@ abstract class YeastParents_generated extends java.lang.Object implements star.e
 	private star.genetics.v1.ui.model.CrateModel model;
 	private static final long serialVersionUID = 1L;
 
-	public YeastParents_generated()
+	public  YeastParents_generated()
 	{
 		super();
 	}
-
+	 
 	public void addNotify()
 	{
-		getAdapter().addHandled(star.genetics.v1.ui.events.CrateMateEvent.class);
+		getAdapter().addHandled( star.genetics.v1.ui.events.CrateMateEvent.class );
 	}
-
+	 
 	public void eventRaised(final star.event.Event event)
 	{
 		eventRaisedHandles(event);
 	}
-
+	 
 	private void eventRaisedHandles(final star.event.Event event)
 	{
-		if (event.getClass().getName().equals("star.genetics.v1.ui.events.CrateMateEvent") && event.isValid())
+		if( event.getClass().getName().equals( "star.genetics.v1.ui.events.CrateMateEvent" ) && event.isValid() ) 
 		{
-			long start = System.nanoTime();
-
-			handleMating((star.genetics.v1.ui.events.CrateMateRaiser) event.getSource());
-			long end = System.nanoTime();
-			if (end - start > 500000000)
-			{
-				System.out.println(this.getClass().getName() + ".handleMating " + (end - start) / 1000000);
-			}
+			 long start = System.nanoTime();
+			
+			handleMating( (star.genetics.v1.ui.events.CrateMateRaiser)event.getSource());
+			 long end = System.nanoTime();
+			 if( end - start > 500000000 ) { System.out.println( this.getClass().getName() + ".handleMating "  + ( end-start )/1000000 ); } 
 		}
 	}
-
+	 
 	public star.event.Adapter getAdapter()
 	{
-		if (adapter == null)
+		if( adapter == null )
 		{
 			adapter = new star.event.Adapter(this);
 		}
 		return adapter;
 	}
-
+	 
 	public star.genetics.v1.ui.model.CrateModel getModel()
 	{
-		return this.model;
+		return this.model ;
 	}
-
+	 
 	abstract void handleMating(star.genetics.v1.ui.events.CrateMateRaiser CrateMateRaiser);
-
+	 
 	public void raise_CrateParentsEvent()
 	{
 		(new star.genetics.v1.ui.events.CrateParentsEvent(this)).raise();
 	}
-
+	 
 	public void raise_CrateParentsUpdatedEvent()
 	{
 		(new star.genetics.v1.ui.events.CrateParentsUpdatedEvent(this)).raise();
 	}
-
+	 
 	public void removeNotify()
 	{
-		getAdapter().removeHandled(star.genetics.v1.ui.events.CrateMateEvent.class);
+		getAdapter().removeHandled( star.genetics.v1.ui.events.CrateMateEvent.class );
 	}
-
+	 
 	protected void setModel(star.genetics.v1.ui.model.CrateModel model)
 	{
-		this.model = model;
+		this.model = model ;
 	}
-
+	 
 }

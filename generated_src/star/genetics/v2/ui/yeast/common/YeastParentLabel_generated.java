@@ -7,87 +7,81 @@ abstract class YeastParentLabel_generated extends javax.swing.JPanel implements 
 	private star.event.Adapter adapter;
 	private static final long serialVersionUID = 1L;
 
-	public YeastParentLabel_generated()
+	public  YeastParentLabel_generated()
 	{
 		super();
 	}
-
-	public YeastParentLabel_generated(boolean boolean0)
+	 
+	public  YeastParentLabel_generated(boolean boolean0)
 	{
 		super(boolean0);
 	}
-
-	public YeastParentLabel_generated(java.awt.LayoutManager layoutManager, boolean boolean0)
+	 
+	public  YeastParentLabel_generated(java.awt.LayoutManager layoutManager, boolean boolean0)
 	{
-		super(layoutManager, boolean0);
+		super(layoutManager,boolean0);
 	}
-
-	public YeastParentLabel_generated(java.awt.LayoutManager layoutManager)
+	 
+	public  YeastParentLabel_generated(java.awt.LayoutManager layoutManager)
 	{
 		super(layoutManager);
 	}
-
+	 
 	public void addNotify()
 	{
 		super.addNotify();
-		getAdapter().addHandled(star.genetics.v1.ui.events.OrganismSelectedEvent.class);
-		getAdapter().addHandled(star.genetics.v1.ui.events.OrganismSetAsParentEvent.class);
+		getAdapter().addHandled( star.genetics.v1.ui.events.OrganismSelectedEvent.class );
+		getAdapter().addHandled( star.genetics.v1.ui.events.OrganismSetAsParentEvent.class );
 	}
-
+	 
 	public void eventRaised(final star.event.Event event)
 	{
 		eventRaisedHandles(event);
 	}
-
+	 
 	private void eventRaisedHandles(final star.event.Event event)
 	{
-		if (event.getClass().getName().equals("star.genetics.v1.ui.events.OrganismSelectedEvent") && event.isValid())
+		if( event.getClass().getName().equals( "star.genetics.v1.ui.events.OrganismSelectedEvent" ) && event.isValid() ) 
 		{
-			long start = System.nanoTime();
-
-			handle((star.genetics.v1.ui.events.OrganismSelectedRaiser) event.getSource());
-			long end = System.nanoTime();
-			if (end - start > 500000000)
-			{
-				System.out.println(this.getClass().getName() + ".handle " + (end - start) / 1000000);
-			}
+			 long start = System.nanoTime();
+			
+			handle( (star.genetics.v1.ui.events.OrganismSelectedRaiser)event.getSource());
+			 long end = System.nanoTime();
+			 if( end - start > 500000000 ) { System.out.println( this.getClass().getName() + ".handle "  + ( end-start )/1000000 ); } 
 		}
-		if (event.getClass().getName().equals("star.genetics.v1.ui.events.OrganismSetAsParentEvent") && event.isValid())
+		if( event.getClass().getName().equals( "star.genetics.v1.ui.events.OrganismSetAsParentEvent" ) && event.isValid() ) 
 		{
-			long start = System.nanoTime();
-
-			setAsParent((star.genetics.v1.ui.events.OrganismSetAsParentRaiser) event.getSource());
-			long end = System.nanoTime();
-			if (end - start > 500000000)
-			{
-				System.out.println(this.getClass().getName() + ".setAsParent " + (end - start) / 1000000);
-			}
+			 long start = System.nanoTime();
+			
+			setAsParent( (star.genetics.v1.ui.events.OrganismSetAsParentRaiser)event.getSource());
+			 long end = System.nanoTime();
+			 if( end - start > 500000000 ) { System.out.println( this.getClass().getName() + ".setAsParent "  + ( end-start )/1000000 ); } 
 		}
 	}
-
+	 
 	public star.event.Adapter getAdapter()
 	{
-		if (adapter == null)
+		if( adapter == null )
 		{
 			adapter = new star.event.Adapter(this);
 		}
 		return adapter;
 	}
-
+	 
 	abstract void handle(star.genetics.v1.ui.events.OrganismSelectedRaiser OrganismSelectedRaiser);
-
+	 
 	public void raise_OrganismSelectedEvent()
 	{
 		(new star.genetics.v1.ui.events.OrganismSelectedEvent(this)).raise();
 	}
-
+	 
 	public void removeNotify()
 	{
 		super.removeNotify();
-		getAdapter().removeHandled(star.genetics.v1.ui.events.OrganismSelectedEvent.class);
-		getAdapter().removeHandled(star.genetics.v1.ui.events.OrganismSetAsParentEvent.class);
+		getAdapter().removeHandled( star.genetics.v1.ui.events.OrganismSelectedEvent.class );
+		getAdapter().removeHandled( star.genetics.v1.ui.events.OrganismSetAsParentEvent.class );
 	}
-
+	 
 	abstract void setAsParent(star.genetics.v1.ui.events.OrganismSetAsParentRaiser OrganismSetAsParentRaiser);
-
+	 
 }
