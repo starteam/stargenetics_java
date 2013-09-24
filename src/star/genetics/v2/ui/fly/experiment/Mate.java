@@ -112,7 +112,7 @@ public class Mate extends Mate_generated
 			else
 			// count > 1
 			{
-				values = new int[] { 1, 2, 5, 10, 20, 50 };
+				values = new int[] { 1, 2, 5, 10, 20 };
 			}
 			int MAX = values.length;
 			PossibleValue[] possibleValues = new PossibleValue[MAX];

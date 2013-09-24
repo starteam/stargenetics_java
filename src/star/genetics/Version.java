@@ -1,5 +1,5 @@
 /* Created by JReleaseInfo AntTask from Open Source Competence Group */
-/* Creation date Tue Aug 20 09:42:45 EDT 2013 */
+/* Creation date Tue Sep 24 15:12:29 EDT 2013 */
 package star.genetics;
 
 import java.util.Date;
@@ -9,33 +9,26 @@ import java.util.Date;
  * 
  * @author JReleaseInfo AntTask
  */
-public class Version
-{
+public class Version {
 
-	/** buildDate (set during build process to 1377006165998L). */
-	private static Date buildDate = new Date(1377006165998L);
 
-	/**
-	 * Get buildDate (set during build process to Tue Aug 20 09:42:45 EDT 2013).
-	 * 
-	 * @return Date buildDate
-	 */
-	public static final Date getBuildDate()
-	{
-		return buildDate;
-	}
+   /** buildDate (set during build process to 1380049949869L). */
+   private static Date buildDate = new Date(1380049949869L);
 
-	/** project (set during build process to "StarGenetics"). */
-	private static String project = new String("StarGenetics");
+   /**
+    * Get buildDate (set during build process to Tue Sep 24 15:12:29 EDT 2013).
+    * @return Date buildDate
+    */
+   public static final Date getBuildDate() { return buildDate; }
 
-	/**
-	 * Get project (set during build process to "StarGenetics").
-	 * 
-	 * @return String project
-	 */
-	public static final String getProject()
-	{
-		return project;
-	}
+
+   /** project (set during build process to "StarGenetics"). */
+   private static String project = new String("StarGenetics");
+
+   /**
+    * Get project (set during build process to "StarGenetics").
+    * @return String project
+    */
+   public static final String getProject() { return project; }
 
 }
