@@ -241,7 +241,7 @@ public class Crate extends Crate_generated implements CrateInterface
 						@Override
 						public void run()
 						{
-							JOptionPane.showMessageDialog(self, MessageFormat.format("Too many progenies! Limit per experiment is: {0}",max));
+							JOptionPane.showMessageDialog(self, MessageFormat.format("These parents cannot produce any more progeny. Limit per experiment is: {0}",max));
 						}
 					});
 				}
