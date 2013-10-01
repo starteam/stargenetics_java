@@ -23,7 +23,9 @@ public class Messages
 	{
 		try
 		{
-			return RESOURCE_BUNDLE.getString(key);
+			String str = RESOURCE_BUNDLE.getString(key);
+			str = str.replaceAll("\\\\n", "\n");
+			return str;
 		}
 		catch (MissingResourceException e)
 		{
@@ -36,6 +38,8 @@ public class Messages
 		try
 		{
 			ResourceBundle r = ResourceBundle.getBundle(BUNDLE_NAME, locale);
+			String str = r.getString(key);
+			str = str.replaceAll("\\\\n", "\n");
 			return r.getString(key);
 		}
 		catch (MissingResourceException e)
