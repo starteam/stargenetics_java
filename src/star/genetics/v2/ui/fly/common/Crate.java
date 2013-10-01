@@ -187,7 +187,7 @@ public class Crate extends Crate_generated implements CrateInterface
 		ModelPropertiesSheet properties = (ModelPropertiesSheet) mainModel.getModelMetadata().get(ModelPropertiesSheet.class);
 		if (properties != null)
 		{
-			String str = properties.get("MaxChildrenPerExperiment");
+			String str = properties.get("Maximum Number of Progeny Per Experiment");
 			if (str != null)
 			{
 				try
@@ -241,7 +241,7 @@ public class Crate extends Crate_generated implements CrateInterface
 						@Override
 						public void run()
 						{
-							JOptionPane.showMessageDialog(self, MessageFormat.format("These parents cannot produce any more progeny. Limit per experiment is: {0}",max));
+							JOptionPane.showMessageDialog(self, MessageFormat.format("These parents cannot produce any more progeny. The maximum number of progeny per experiment is: {0}",max));
 						}
 					});
 				}
