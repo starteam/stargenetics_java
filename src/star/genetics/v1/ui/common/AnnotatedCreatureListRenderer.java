@@ -51,12 +51,12 @@ public class AnnotatedCreatureListRenderer implements ListCellRenderer
 			panel.setBackground(Color.white);
 			Creature c = (Creature) value;
 
-			Object obj = list.getClientProperty("VISUALIZER");  //$NON-NLS-1$
+			Object obj = list.getClientProperty("VISUALIZER"); //$NON-NLS-1$
 			if (obj == null)
 			{
-				list.putClientProperty("VISUALIZER", new TreeMap<String, JComponent>());  //$NON-NLS-1$
+				list.putClientProperty("VISUALIZER", new TreeMap<String, JComponent>()); //$NON-NLS-1$
 			}
-			TreeMap<String, JComponent> tree = (TreeMap<String, JComponent>) list.getClientProperty("VISUALIZER");  //$NON-NLS-1$
+			TreeMap<String, JComponent> tree = (TreeMap<String, JComponent>) list.getClientProperty("VISUALIZER"); //$NON-NLS-1$
 			String key = c.getName() + String.valueOf(c.getProperties()) + String.valueOf(c.getSex()) + String.valueOf(c.getNote());
 			JComponent f;
 			if (tree.containsKey(key))
@@ -74,9 +74,9 @@ public class AnnotatedCreatureListRenderer implements ListCellRenderer
 			int width2 = f.getClientProperty("NONOTE") == null ? width : 0; // fix  //$NON-NLS-1$
 			                                                                // for
 			                                                                // peas!
-			String widthConstraint = "[" + width + ":" + width + ":" + width + "]";     //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
-			String widthConstraint2 = "[" + width2 + ":" + width2 + ":" + width2 + "]";     //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
-			panel.setLayout(new MigLayout("gap 0 0", widthConstraint + widthConstraint2));  //$NON-NLS-1$
+			String widthConstraint = "[" + width + ":" + width + ":" + width + "]"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
+			String widthConstraint2 = "[" + width2 + ":" + width2 + ":" + width2 + "]"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
+			panel.setLayout(new MigLayout("gap 0 0", widthConstraint + widthConstraint2)); //$NON-NLS-1$
 
 			f.setBackground(Color.white);
 			f.setOpaque(false);
@@ -120,11 +120,11 @@ public class AnnotatedCreatureListRenderer implements ListCellRenderer
 			}
 			else
 			{
-				data = new JTextArea("", 4, 10);  //$NON-NLS-1$
+				data = new JTextArea("", 4, 10); //$NON-NLS-1$
 				data.setBorder(BorderFactory.createEmptyBorder());
 				data.setMaximumSize(f.getPreferredSize());
 				data.setBackground(Color.white);
-				panel.add(data, "top");  //$NON-NLS-1$
+				panel.add(data, "top"); //$NON-NLS-1$
 			}
 			return panel;
 		}

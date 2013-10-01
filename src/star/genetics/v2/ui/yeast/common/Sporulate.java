@@ -109,38 +109,38 @@ public class Sporulate extends Sporulate_generated
 				possibleValues[i] = new MatingDialogPossibleValue((values[i]), (values[i]) * matingCount);
 			}
 			AddMoreMatingsDialog dd = new AddMoreMatingsDialog(this, Messages.getString("Sporulate.3"), Messages.getString("Sporulate.4"), possibleValues, new Validator() //$NON-NLS-1$ //$NON-NLS-2$
-			{
-				@Override
-				public boolean isValid(String input)
-				{
-					try
-					{
-						return Math.round(Float.parseFloat(input)) % matingCount == 0;
-					}
-					catch (Exception ex)
-					{
-						return false;
-					}
-				}
+			        {
+				        @Override
+				        public boolean isValid(String input)
+				        {
+					        try
+					        {
+						        return Math.round(Float.parseFloat(input)) % matingCount == 0;
+					        }
+					        catch (Exception ex)
+					        {
+						        return false;
+					        }
+				        }
 
-				@Override
-				public String suggestedValid(String input)
-				{
-					try
-					{
-						int matings = Math.round(Float.parseFloat(input) / matingCount);
-						if (matings <= 0)
-						{
-							matings = 1;
-						}
-						return "" + matings * matingCount; //$NON-NLS-1$
-					}
-					catch (Exception ex)
-					{
-						return "" + matingCount; //$NON-NLS-1$
-					}
-				}
-			});
+				        @Override
+				        public String suggestedValid(String input)
+				        {
+					        try
+					        {
+						        int matings = Math.round(Float.parseFloat(input) / matingCount);
+						        if (matings <= 0)
+						        {
+							        matings = 1;
+						        }
+						        return "" + matings * matingCount; //$NON-NLS-1$
+					        }
+					        catch (Exception ex)
+					        {
+						        return "" + matingCount; //$NON-NLS-1$
+					        }
+				        }
+			        });
 			MatingDialogPossibleValue selectedValue = (MatingDialogPossibleValue) JOptionPane.showInputDialog(this, Messages.getString("Sporulate.7"), Messages.getString("Sporulate.8"), JOptionPane.INFORMATION_MESSAGE, null, possibleValues, possibleValues[0]); //$NON-NLS-1$ //$NON-NLS-2$
 			if (selectedValue == null)
 			{

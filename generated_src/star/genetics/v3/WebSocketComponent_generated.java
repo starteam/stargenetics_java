@@ -2,7 +2,7 @@
 
 package star.genetics.v3;
 
-abstract class WebSocketComponent_generated extends java.lang.Object implements star.event.EventController, star.genetics.events.OpenModelRaiser, star.genetics.events.SaveModelRaiser
+abstract class WebSocketComponent_generated extends java.lang.Object implements star.event.EventController, star.event.Listener, star.genetics.events.OpenModelRaiser, star.genetics.events.SaveModelRaiser
 {
 	private star.event.Adapter adapter;
 	private static final long serialVersionUID = 1L;
@@ -14,6 +14,33 @@ abstract class WebSocketComponent_generated extends java.lang.Object implements 
 	 
 	public void addNotify()
 	{
+		getAdapter().addHandled( star.genetics.events.LoadModelEvent.class );
+		getAdapter().addHandled( star.genetics.v1.ui.events.CrateNewCrateEvent.class );
+	}
+	 
+	public void eventRaised(final star.event.Event event)
+	{
+		eventRaisedHandles(event);
+	}
+	 
+	private void eventRaisedHandles(final star.event.Event event)
+	{
+		if( event.getClass().getName().equals( "star.genetics.events.LoadModelEvent" ) && event.isValid() ) 
+		{
+			 long start = System.nanoTime();
+			
+			modelLoaded( (star.genetics.events.LoadModelRaiser)event.getSource());
+			 long end = System.nanoTime();
+			 if( end - start > 500000000 ) { System.out.println( this.getClass().getName() + ".modelLoaded "  + ( end-start )/1000000 ); } 
+		}
+		if( event.getClass().getName().equals( "star.genetics.v1.ui.events.CrateNewCrateEvent" ) && event.isValid() ) 
+		{
+			 long start = System.nanoTime();
+			
+			newExperiment( (star.genetics.v1.ui.events.CrateNewCrateRaiser)event.getSource());
+			 long end = System.nanoTime();
+			 if( end - start > 500000000 ) { System.out.println( this.getClass().getName() + ".newExperiment "  + ( end-start )/1000000 ); } 
+		}
 	}
 	 
 	public star.event.Adapter getAdapter()
@@ -24,6 +51,10 @@ abstract class WebSocketComponent_generated extends java.lang.Object implements 
 		}
 		return adapter;
 	}
+	 
+	abstract void modelLoaded(star.genetics.events.LoadModelRaiser LoadModelRaiser);
+	 
+	abstract void newExperiment(star.genetics.v1.ui.events.CrateNewCrateRaiser CrateNewCrateRaiser);
 	 
 	public void raise_OpenModelEvent()
 	{
@@ -37,6 +68,8 @@ abstract class WebSocketComponent_generated extends java.lang.Object implements 
 	 
 	public void removeNotify()
 	{
+		getAdapter().removeHandled( star.genetics.events.LoadModelEvent.class );
+		getAdapter().removeHandled( star.genetics.v1.ui.events.CrateNewCrateEvent.class );
 	}
 	 
 }

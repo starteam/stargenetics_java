@@ -1,10 +1,14 @@
 package star.genetics.v2.ui.fly.common;
 
+import java.text.MessageFormat;
+
+import javax.swing.JComponent;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.SwingConstants;
+import javax.swing.SwingUtilities;
 
 import net.miginfocom.swing.MigLayout;
 import star.annotations.Handles;
@@ -14,6 +18,7 @@ import star.annotations.SignalComponent;
 import star.genetics.Messages;
 import star.genetics.events.ErrorDialogRaiser;
 import star.genetics.genetic.impl.MatingException;
+import star.genetics.genetic.impl.ModelPropertiesSheet;
 import star.genetics.genetic.model.Creature;
 import star.genetics.genetic.model.CreatureSet;
 import star.genetics.genetic.model.MatingEngine;
@@ -176,33 +181,87 @@ public class Crate extends Crate_generated implements CrateInterface
 		handleMating(parents, raiser);
 	}
 
+	public int getMaxProgenies()
+	{
+		int max = Integer.MAX_VALUE;
+		ModelPropertiesSheet properties = (ModelPropertiesSheet) mainModel.getModelMetadata().get(ModelPropertiesSheet.class);
+		if (properties != null)
+		{
+			String str = properties.get("Maximum Number of Progeny Per Experiment");
+			if (str != null)
+			{
+				try
+				{
+					max = Math.round(Float.parseFloat(str));
+				}
+				catch (NumberFormatException ex)
+				{
+					ex.printStackTrace();
+				}
+			}
+		}
+		return max;
+	}
+
 	void handleMating(CrateParentsRaiser parents, CrateMateRaiser raiser)
 	{
 		if (matingEnabled && parents != null && raiser != null)
 		{
-
 			try
 			{
-				MatingEngine engine = getModel().getMater();
-				int count = raiser.getCount();
-				for (int i = 0; i < count; i++)
+				final int max = getMaxProgenies();
+				CreatureSet children = getModel().getProgenies();
+				boolean overflow = children.size() >= max;
+				if (children.size() < max)
 				{
-					int start_from = getModel().getProgenies().size();
-					CreatureSet progenies = engine.getProgenies(getModel().getName(), parents.getParents(), start_from + 1, mainModel.getMatingsCount(), mainModel.getRules());
-					setProgenies(progenies);
-					for (Creature c : getProgenies())
+					MatingEngine engine = getModel().getMater();
+					int count = raiser.getCount();
+					OUT: for (int i = 0; i < count; i++)
 					{
-						getModel().getProgenies().add(c);
+						int start_from = getModel().getProgenies().size();
+						CreatureSet progenies = engine.getProgenies(getModel().getName(), parents.getParents(), start_from + 1, mainModel.getMatingsCount(), mainModel.getRules());
+						setProgenies(progenies);
+						for (Creature c : getProgenies())
+						{
+							children.add(c);
+							if (children.size() >= max)
+							{
+								overflow = true;
+								break OUT;
+							}
+						}
 					}
-					raise_CrateProgeniesEvent();
 				}
+				if( overflow )
+				{
+					final JComponent self = this;
+					SwingUtilities.invokeLater(new Runnable()
+					{
+
+						@Override
+						public void run()
+						{
+							JOptionPane.showMessageDialog(self, MessageFormat.format("These parents cannot produce any more progeny. The maximum number of progeny per experiment is: {0}",max));
+						}
+					});
+				}
+				raise_CrateProgeniesEvent();
 				UIHelpers.getFrame(this).repaint();
 			}
-			catch (MatingException ex)
+			catch (final MatingException ex)
 			{
 				errorMessage = new RuntimeException(ex.getLocalizedMessage(), ex);
 				// raise_ErrorDialogEvent();
-				JOptionPane.showMessageDialog(this, ex.getLocalizedMessage());
+				final JComponent self = this;
+				SwingUtilities.invokeLater(new Runnable()
+				{
+
+					@Override
+					public void run()
+					{
+						JOptionPane.showMessageDialog(self, ex.getLocalizedMessage());
+					}
+				});
 			}
 		}
 	}

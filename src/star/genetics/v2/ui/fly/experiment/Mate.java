@@ -12,6 +12,7 @@ import javax.swing.SwingUtilities;
 import star.annotations.Handles;
 import star.annotations.SignalComponent;
 import star.genetics.Messages;
+import star.genetics.genetic.impl.MatingException;
 import star.genetics.v1.ui.events.CrateMateRaiser;
 import star.genetics.v1.ui.events.CrateParentsRaiser;
 import star.genetics.v1.ui.events.CrateProgeniesRaiser;
@@ -111,7 +112,7 @@ public class Mate extends Mate_generated
 			else
 			// count > 1
 			{
-				values = new int[] { 1, 2, 5, 10, 20, 50 };
+				values = new int[] { 1, 2, 5, 10, 20 };
 			}
 			int MAX = values.length;
 			PossibleValue[] possibleValues = new PossibleValue[MAX];
@@ -137,18 +138,24 @@ public class Mate extends Mate_generated
 				@Override
 				public void run()
 				{
-					raise_CrateMateEvent();
-					SwingUtilities.invokeLater(new Runnable()
+					try
 					{
-
-						@Override
-						public void run()
+						raise_CrateMateEvent();
+					}
+					finally
+					{
+						SwingUtilities.invokeLater(new Runnable()
 						{
-							raise_StorableExperimentEvent();
-							d.setVisible(false);
-							d.dispose();
-						}
-					});
+
+							@Override
+							public void run()
+							{
+								raise_StorableExperimentEvent();
+								d.setVisible(false);
+								d.dispose();
+							}
+						});
+					}
 				}
 			}).start();
 			if (d.isDisplayable())

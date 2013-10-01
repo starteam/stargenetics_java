@@ -103,7 +103,7 @@ public class JGel extends JComponent
 		{
 			JPanel pq = new JPanel();
 			pq.setLayout(new BorderLayout());
-			pq.add(BorderLayout.WEST, new JLabel("<html><body><b>"+Messages.getString("JGel.0")+"</b><br>" + getProperties(), JLabel.CENTER)); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+			pq.add(BorderLayout.WEST, new JLabel("<html><body><b>" + Messages.getString("JGel.0") + "</b><br>" + getProperties(), JLabel.CENTER)); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 			add(pq);
 			for (Gel g : displayedGels)
 			{

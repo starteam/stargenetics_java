@@ -7,60 +7,61 @@ abstract class FileList_generated extends javax.swing.JPanel implements star.eve
 	private star.event.Adapter adapter;
 	private static final long serialVersionUID = 1L;
 
-	public  FileList_generated()
+	public FileList_generated()
 	{
 		super();
 	}
-	 
-	public  FileList_generated(boolean boolean0)
+
+	public FileList_generated(boolean boolean0)
 	{
 		super(boolean0);
 	}
-	 
-	public  FileList_generated(java.awt.LayoutManager layoutManager, boolean boolean0)
+
+	public FileList_generated(java.awt.LayoutManager layoutManager, boolean boolean0)
 	{
-		super(layoutManager,boolean0);
+		super(layoutManager, boolean0);
 	}
-	 
-	public  FileList_generated(java.awt.LayoutManager layoutManager)
+
+	public FileList_generated(java.awt.LayoutManager layoutManager)
 	{
 		super(layoutManager);
 	}
-	 
+
 	public void addNotify()
 	{
 		super.addNotify();
 	}
-	 
+
 	public star.event.Adapter getAdapter()
 	{
-		if( adapter == null )
+		if (adapter == null)
 		{
 			adapter = new star.event.Adapter(this);
 		}
 		return adapter;
 	}
-	 
+
 	public void raise_ErrorDialogEvent()
 	{
 		(new star.genetics.events.ErrorDialogEvent(this)).raise();
 	}
-	 
+
 	public void removeNotify()
 	{
 		super.removeNotify();
 	}
-	 
+
 	abstract void update();
-	 
+
 	void update_SwingUtilitiesInvokeLater()
 	{
 		javax.swing.SwingUtilities.invokeLater(new java.lang.Runnable()
+		{
+			public void run()
 			{
-			public void run() {
 				update();
 			}
 		});
 	}
-	 
+
 }
