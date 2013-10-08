@@ -121,7 +121,7 @@ public class MainFrame extends MainFrame_generated implements VersionCheckerDeco
 		getContentPane().add(mainPanel);
 		setTitle(getPreferences().get("title", "missing preferences")); //$NON-NLS-1$ //$NON-NLS-2$
 		getAdapter().addComponent(new UnhandledExceptionHandlerComponent());
-		getAdapter().addComponent(new WebSocketComponent());
+		//getAdapter().addComponent(new WebSocketComponent());
 		pack();
 	}
 
