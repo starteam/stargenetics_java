@@ -260,6 +260,12 @@ public class Fly extends JComponent implements Visualizer
 
 			g.setStroke(new BasicStroke(0.020f * rect.width, BasicStroke.CAP_ROUND, BasicStroke.JOIN_MITER, 10.0f));
 			g.setColor(Color.black);
+			Color bc =  getBodyColor();
+			if( bc.getRed() < 64 && bc.getBlue() < 64 && bc.getGreen() < 64 )
+			{
+				g.setColor(Color.white);
+				g.setStroke(new BasicStroke(0.030f * rect.width, BasicStroke.CAP_ROUND, BasicStroke.JOIN_MITER, 10.0f));
+			}
 			g.draw(ellipse);
 
 			switch (sex)
