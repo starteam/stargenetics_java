@@ -154,6 +154,7 @@ public class DiscardExperiment extends DiscardExperiment_generated
 		{
 			ret = JOptionPane.OK_OPTION;
 		}
+		
 		// int ret = JOptionPane.showConfirmDialog(this, "Are you sure you want to discard current generation?", "Discard current generation?",
 		// JOptionPane.OK_CANCEL_OPTION);
 		if (ret == JOptionPane.OK_OPTION)

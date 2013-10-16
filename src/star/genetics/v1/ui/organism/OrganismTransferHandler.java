@@ -78,11 +78,19 @@ public class OrganismTransferHandler extends star.genetics.v1.ui.common.Creature
 			// add
 			{
 				Rectangle r = list.getCellBounds(index, index);
+				int size = list.getModel().getSize();
 				if (r != null && !r.contains(p))
 				{
 					list.getListModel().add(c);
 					list.setSelectedValue(c, true);
 					list.repaint();
+				}
+				else if (size - index == 1 && (p.y - r.y) > 3 * r.height / 4)
+				{
+					list.getListModel().add(c);
+					list.setSelectedValue(c, true);
+					list.repaint();
+
 				}
 				else
 				{
@@ -93,6 +101,7 @@ public class OrganismTransferHandler extends star.genetics.v1.ui.common.Creature
 				// }
 
 			}
+			list.raise_OrganismSelectedEvent();
 			creatureExporting--;
 		}
 		return ret;
