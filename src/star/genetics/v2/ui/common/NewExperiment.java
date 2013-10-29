@@ -85,16 +85,16 @@ public class NewExperiment extends NewExperiment_generated
 			setTitle("New Experiment"); //$NON-NLS-1$
 			Container container = getContentPane();
 			container.setLayout(new MigLayout());
-			JLabel l = new JLabel( "<html>When you click on the \"New Experiment\" button, your current experiment will move down to the \"Saved Experiment\" window. \n" + 
-					"<br><br>"+"Within the \"Saved Experiment\" window you will not be able to add more matings to your experiment, but you will be able"+
-					"<br>"+" to use any of the resulting progeny for future matings.\n" + 
+			JLabel l = new JLabel( "<html>When you click on the \"New Experiment\" button, your current experiment will move down to the \"Saved Experiments\" window. \n" + 
+					"<br><br>"+"Within the \"Saved Experiments\" window, you will not be able to add more matings to your experiment, but you will be able"+
+					"<br>"+" to view the experimental results and use any of the resulting progeny in future experiments.\n" + 
 					"</html>"); //$NON-NLS-1$
 			container.add(l, "wrap"); //$NON-NLS-1$
-			cb = new JCheckBox(Messages.getString("DiscardExperiment.6")); //$NON-NLS-1$
+			cb = new JCheckBox("Don't show me again."); //$NON-NLS-1$
 			container.add(cb, "wrap"); //$NON-NLS-1$
-			b1 = new JButton("Yes"); //$NON-NLS-1$
+			b1 = new JButton("OK"); //$NON-NLS-1$
 			b1.setFocusPainted(true);
-			JButton b2 = new JButton("No"); //$NON-NLS-1$
+			JButton b2 = new JButton("Cancel"); //$NON-NLS-1$
 			b1.addActionListener(new ActionListener()
 			{
 
