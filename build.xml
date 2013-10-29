@@ -160,6 +160,11 @@
 	<target name="jar" depends="update_samples,update_samples_ht">
 		<echo>Creating JAR</echo>
 		<jar destfile="StarGenetics.jar">
+			<manifest>
+			    <attribute name="Main-Class" value="star.genetics.Main"/>
+			    <attribute name="Permissions" value="all-permissions"/>
+			    <attribute name="Application-Name" value="Star Genetics"/>
+			</manifest>
 			<fileset dir="build" id="build">
 				<include name="**" />
 				<exclude name=".classpath" />

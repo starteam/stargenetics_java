@@ -90,7 +90,6 @@ public class InputOutput extends InputOutput_generated
 
 				final protected void writeObjectOverride(Object obj) throws java.io.IOException
 				{
-					System.out.println("writing " + obj.getClass());
 					super.writeObjectOverride(obj);
 				};
 			};

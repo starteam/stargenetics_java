@@ -248,7 +248,7 @@ public class Load extends Load_generated implements OpenModel
 			creature.setSex(getSex(creature, genome));
 			isValidGenoType(creature, genome);
 			c.add(creature);
-			Utilities.printCreature(creature);
+			//Utilities.printCreature(creature);
 		}
 		model.setCreatures(c);
 	}
@@ -546,7 +546,7 @@ public class Load extends Load_generated implements OpenModel
 			creature.addProperties(map);
 			isValidGenoType(creature, genome);
 			c.add(creature);
-			Utilities.printCreature(creature);
+			//Utilities.printCreature(creature);
 		}
 		model.setCreatures(c);
 	}
