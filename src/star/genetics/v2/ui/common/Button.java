@@ -21,7 +21,13 @@ public abstract class Button extends JButton implements ActionListener
 		setEnabled(isEnabledOnInit());
 		setToolTipText(getButtonTooltipText());
 	}
-
+	
+	@Override
+	public void setToolTipText(String text)
+	{
+	    super.setToolTipText(text != null ? text : "" );
+	}
+	
 	public void actionPerformed(ActionEvent e)
 	{
 		onAction();

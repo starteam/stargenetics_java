@@ -201,7 +201,7 @@ public class ReplicaPanel extends ReplicaPanel_generated
 		String text = "<html><body>" + getCreatureName(creature, "") + "<br>" + property + "</body></html>"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
 		String tooltip_text = (creature != null ? creature.getName() + ": " : "") + property; //$NON-NLS-1$ //$NON-NLS-2$
 		JLabel ret = new TitleLabel(text);
-		ret.setToolTipText(tooltip_text);
+		ret.setToolTipText(tooltip_text != null ? tooltip_text : "");
 		return ret;
 	}
 

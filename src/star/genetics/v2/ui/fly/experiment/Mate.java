@@ -96,7 +96,7 @@ public class Mate extends Mate_generated
 		{
 			String text = Messages.getString("Mate.2"); //$NON-NLS-1$
 			setText(text);
-			setToolTipText(text);
+			setToolTipText(text != null ? text : "" );
 			raise_ListItemSelectedEvent();
 			ccount = 1;
 			raise_CrateMateEvent();

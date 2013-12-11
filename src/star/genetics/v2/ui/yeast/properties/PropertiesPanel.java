@@ -58,7 +58,7 @@ public class PropertiesPanel extends PropertiesPanel_generated
 		String str = getName();
 		final JTextArea creatureName = new JTextArea(str);
 		creatureName.setEditable(false);
-		creatureName.setToolTipText(getName());
+		creatureName.setToolTipText(getName() != null ? getName() : "");
 		if (OS.isMacOSX())
 		{
 			creatureName.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(CommonUI.get().getTitleBackground(), 1), BorderFactory.createEmptyBorder(2, 2, 2, 2)));
@@ -74,7 +74,7 @@ public class PropertiesPanel extends PropertiesPanel_generated
 					creature.setName(name);
 					visualization.setName(name);
 					creatureName.setText(name);
-					creatureName.setToolTipText(name);
+					creatureName.setToolTipText(name != null ? name : "");
 					raise_CreaturePropertiesChangedEvent(CreaturePropertiesChangedRaiser.Kind.NAME);
 				}
 

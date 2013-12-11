@@ -46,12 +46,18 @@ public class ParentsTransferHandler extends CreatureTransferHandler
 	@Override
 	public void exportAsDrag(JComponent comp, InputEvent e, int action)
 	{
-		myCreature = parentList.getSelectedCreature();
-		Visualizer v = parentList.getGeneticModel().getVisualizerFactory().newVisualizerInstance();
-		v.setName(myCreature.getName());
-		v.setProperties(myCreature.getProperties(), myCreature.getSex());
-		UIHelpers.setVisual(v.getJComponent());
-		super.exportAsDrag(comp, e, action);
+		if( parentList != null )
+		{
+			myCreature = parentList.getSelectedCreature();
+			if( myCreature != null )
+			{
+				Visualizer v = parentList.getGeneticModel().getVisualizerFactory().newVisualizerInstance();
+				v.setName(myCreature.getName());
+				v.setProperties(myCreature.getProperties(), myCreature.getSex());
+				UIHelpers.setVisual(v.getJComponent());
+				super.exportAsDrag(comp, e, action);
+			}
+		}
 	}
 
 	@Override

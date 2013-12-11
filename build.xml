@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <project name="StarGenetics" default="build" basedir=".">
+
+	<condition property="is_windows">
+        	<os family="windows"/>
+	</condition>
+	<condition property="is_mac">
+        	<os family="mac"/>
+	</condition>
+
 	<taskdef name="jreleaseinfo" classname="ch.oscg.jreleaseinfo.anttask.JReleaseInfoAntTask" classpath="../star_signalsystem_java/lib/jreleaseinfo-1.2.0.jar"/>
 
 	<property name="src" value="${basedir}/src" />
