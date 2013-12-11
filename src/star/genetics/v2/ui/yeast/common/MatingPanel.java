@@ -783,7 +783,7 @@ public class MatingPanel extends MatingPanel_generated
 		String text = Messages.getString("MatingPanel.44") + getCreatureName(creature, "") + "&nbsp;<br>" + property + " &nbsp;</body></html>"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
 		String tooltip_text = (creature != null ? creature.getName() + ": " : "") + property; //$NON-NLS-1$ //$NON-NLS-2$
 		JLabel ret = new TitleLabel(text);
-		ret.setToolTipText(tooltip_text);
+		ret.setToolTipText(tooltip_text != null ? tooltip_text : "" );
 		return ret;
 	}
 

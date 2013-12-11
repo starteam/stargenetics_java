@@ -91,7 +91,7 @@ public class PropertiesPanel extends PropertiesPanel_generated implements Scroll
 		String str = getName();
 		final JTextArea lname = new JTextArea(str);
 		lname.setEditable(false);
-		lname.setToolTipText(getName());
+		lname.setToolTipText(getName() != null ? getName() : "" );
 		if (OS.isMacOSX())
 		{
 			lname.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(CommonUI.get().getTitleBackground(), 1), BorderFactory.createEmptyBorder(2, 2, 2, 2)));
@@ -108,7 +108,7 @@ public class PropertiesPanel extends PropertiesPanel_generated implements Scroll
 					creature.setName(name);
 					visualization.setName(name);
 					lname.setText(name);
-					lname.setToolTipText(name);
+					lname.setToolTipText(name != null ? name : "");
 					raise_CreaturePropertiesChangedEvent(CreaturePropertiesChangedRaiser.Kind.NAME);
 				}
 
