@@ -430,15 +430,24 @@ public class Peas extends JComponent implements Visualizer
 			podsShape = PodsShape.INFLATED;
 		}
 
-		key = "flowerpodposition"; //$NON-NLS-1$
+		key = "flowerpodposition"; //$NON-NLS-1$ //Flower Pod Position 
 		if (properties.containsKey(key))
 		{
 			flowers = parse(Flowers.values(), properties.get(key));
 			// flowers = Flowers.valueOf(properties.get(key));
 		}
-		else
+		else 
 		{
-			flowers = Flowers.TERMINAL;
+			key = "flower&podposition"; //$NON-NLS-1$
+			if (properties.containsKey(key)) 
+			{
+				flowers = parse(Flowers.values(), properties.get(key));
+				// flowers = Flowers.valueOf(properties.get(key));
+			}
+			else
+			{
+				flowers = Flowers.TERMINAL;
+			}
 		}
 
 		key = "plantheight"; //$NON-NLS-1$
