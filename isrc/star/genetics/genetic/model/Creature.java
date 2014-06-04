@@ -7,6 +7,18 @@ public interface Creature extends Comparable<Creature>
 	public static enum Sex
 	{
 		MALE, FEMALE;
+		
+		public static Sex parse(String sex)
+		{
+			for( Sex s : Sex.values() )
+			{
+				if( sex.equalsIgnoreCase( s.name() ))
+				{
+					return s ;
+				}
+			}
+			throw new IllegalArgumentException(sex);
+		}
 	};
 
 	public String getName();
